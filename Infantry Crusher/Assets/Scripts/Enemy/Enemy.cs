@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] protected float maxHealth;
+    [SerializeField] protected List<Transform> route;
     protected float currentHealth;
 
     private void Start()
@@ -23,6 +24,11 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void Die()
+    {
+
+    }
+
+    public virtual void Move()
     {
 
     }

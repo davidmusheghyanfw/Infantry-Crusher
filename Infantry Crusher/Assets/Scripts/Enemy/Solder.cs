@@ -14,4 +14,11 @@ public class Solder : Enemy, IDestroyable
        currentHealth -= damage;
        if(currentHealth <= 0) Die();
     }
+
+    public override void Move()
+    {
+        
+    }
+
+
 }
