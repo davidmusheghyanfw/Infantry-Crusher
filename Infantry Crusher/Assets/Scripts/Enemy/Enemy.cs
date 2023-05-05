@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] protected Animator animator;
     [SerializeField] protected float maxHealth;
-    [SerializeField] protected List<Transform> route;
+    protected Transform player;
+    public Transform Player { get { return player; } set { player = value; } }
+    [SerializeField] protected List<Vector3> rout;
     protected float currentHealth;
 
     private void Start()
@@ -32,5 +35,10 @@ public class Enemy : MonoBehaviour
     {
 
     }
-
+    public virtual void AddToRout(Transform value)
+    {
+        rout.Add(value.position);
+    }
 }
+public enum EnemyDifficult { Easy,Medium,Hard };
+public enum EnemyType {Flying,Walking}

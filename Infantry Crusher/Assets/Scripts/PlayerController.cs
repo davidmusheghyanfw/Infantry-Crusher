@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [SerializeField]
     private float rotationControll;
     [SerializeField] private Vector2 verticalLimit;
@@ -13,6 +15,11 @@ public class PlayerController : MonoBehaviour
     Vector3 prevDeltaPos = Vector3.zero;
     Vector3 limitsChecker = Vector3.zero;
     private Vector3 cursor;
+
+    private void Awake()
+    {
+        instance = this;    
+    }
 
     void Start()
     {
@@ -34,15 +41,14 @@ public class PlayerController : MonoBehaviour
         cursor = cursorPos;
         deltaPos = new Vector3(-cursorPos.y, cursorPos.x, 0) * rotationControll * Time.deltaTime;
         limitsChecker = deltaPos + transform.eulerAngles;
-        //if (deltaPos.x + transform.eulerAngles.x < horizontalLimit.x) limitsChecker.x = prevDeltaPos.x;
-        //if (deltaPos.x + transform.eulerAngles.x > horizontalLimit.y) limitsChecker.x = prevDeltaPos.y;
-        //if (deltaPos.y + transform.eulerAngles.y < horizontalLimit.x) limitsChecker.y = prevDeltaPos.x;
-        //if (deltaPos.y + transform.eulerAngles.y > horizontalLimit.y) limitsChecker.y = prevDeltaPos.y;
+
+        //if (limitsChecker.x < horizontalLimit.x) limitsChecker.x = prevDeltaPos.x;
+        //if (limitsChecker.x > horizontalLimit.y) limitsChecker.x = prevDeltaPos.y;
+        //if (limitsChecker.y < verticalLimit.x) limitsChecker.y = prevDeltaPos.x;
+        //if (limitsChecker.y > verticalLimit.y) limitsChecker.y = prevDeltaPos.y;
 
         transform.eulerAngles = limitsChecker;
-       
-        //transform.eulerAngles = new Vector3(Mathf.Clamp(transform.eulerAngles.x, -30,30), Mathf.Clamp(transform.eulerAngles.y, -30, 30),0);
-        
+
         prevDeltaPos = limitsChecker;
         MiniGun.instance.Shoot();
     }
