@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Transform Player { get { return player; } set { player = value; } }
     [SerializeField] protected List<Vector3> rout;
     protected float currentHealth;
+    [SerializeField] protected float shootingTime;
 
     private void Start()
     {
@@ -21,7 +22,11 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public virtual void Shoot()
+    public virtual IEnumerator ShootingRoutine()
+    {
+        yield return null;
+    }
+     public virtual void InShootingPlace()
     {
 
     }

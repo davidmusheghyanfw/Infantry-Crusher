@@ -52,15 +52,45 @@ public class Solder : Enemy, IDestroyable
                     else transform.LookAt(Player);
                 }
             }
-            else if (Vector3.Distance(transform.position, Player.position) < 5f)
-            {
-                animator.SetBool("IsStopping", true);
-                StopMoveToPointRoutine();
-            }
+            //else if (Vector3.Distance(transform.position, Player.position) < 5f)
+            //{
+            //    animator.SetBool("IsStopping", true);
+            //    StopMoveToPointRoutine();
+            //}
 
             yield return new WaitForEndOfFrame();
         }
 
+    }
+
+    public override void InShootingPlace()
+    {
+        animator.SetBool("IsStopping", true);
+        StartShootingRoutine();
+    }
+
+    private void StartShootingRoutine()
+    {
+        if (ShootingRoutineC != null) StopCoroutine(ShootingRoutineC);
+        ShootingRoutineC = StartCoroutine(ShootingRoutine());
+    }
+
+    private void StopShootingRoutine()
+    {
+        if (ShootingRoutineC != null) StopCoroutine(ShootingRoutineC);
+    }
+
+    Coroutine ShootingRoutineC;
+
+    public override IEnumerator ShootingRoutine()
+    {
+        yield return new WaitForSeconds(3f);
+        while (true)
+        {
+
+            animator.Play("Gunplay");
+            yield return new WaitForSeconds(shootingTime);
+        }
     }
     public override void AddToRout(Transform value)
     {

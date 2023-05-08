@@ -7,13 +7,21 @@ public class MiniGun : Gun
 
     public static MiniGun instance;
 
+
+    Vector3 directionToCrosshair;
+
     private void Awake()
     {
         instance = this;
     }
+
+    private void Start()
+    {
+        
+    }
     public override Vector3 GetDirection()
     {
-        Vector3 direction = transform.forward;
+        Vector3 direction = Camera.main.transform.forward;
 
         if (AddBulletSpread)
         {
@@ -31,14 +39,20 @@ public class MiniGun : Gun
 
     public override void Shoot()
     {
+        //directionToCrosshair = new Vector3(Screen.width / 2, Screen.height / 2, 10f);
+        //directionToCrosshair = Camera.main.ScreenToWorldPoint(directionToCrosshair);
+       
         if (LastShootTime + ShootDelay < Time.time)
         {
             ShootingSystem.Play();
             Vector3 direction = GetDirection();
 
-            TrailRenderer trail = Instantiate(BulletTrail, BulletSpawnPoint.position, Quaternion.identity);
-            bool hit = Physics.Raycast(BulletSpawnPoint.position, direction, out RaycastHit target, float.MaxValue);
+            bool hit = Physics.Raycast(Camera.main.transform.position, direction, out RaycastHit target, float.MaxValue);
             
+            directionToCrosshair = target.point - BulletSpawnPoint.position;
+            BulletSpawnPoint.rotation = Quaternion.LookRotation(directionToCrosshair);
+
+            TrailRenderer trail = Instantiate(BulletTrail, BulletSpawnPoint.position, Quaternion.identity);
             if (hit)
             {
                 if (target.transform.TryGetComponent(out IDestroyable destroyable))
@@ -46,6 +60,7 @@ public class MiniGun : Gun
                     StartCoroutine(SpawnTrail(trail, target.point, target.normal, false));
                     destroyable.Damaged(BulletDamage);
                 }
+               
                 else
                     StartCoroutine(SpawnTrail(trail, target.point, target.normal, true));
 

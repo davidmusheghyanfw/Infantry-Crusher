@@ -1462,6 +1462,7 @@ GameObject:
   - component: {fileID: 6242114987364228851}
   - component: {fileID: -8039308768801970328}
   - component: {fileID: 3756377133662214665}
+  - component: {fileID: -2618609119744281398}
   m_Layer: 0
   m_Name: solder 2
   m_TagString: Untagged
@@ -1521,6 +1522,7 @@ MonoBehaviour:
   animator: {fileID: 6242114987364228853}
   maxHealth: 200
   rout: []
+  shootingTime: 3
 --- !u!54 &-8039308768801970328
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1550,6 +1552,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.646955, y: 1.8717989, z: 1}
   m_Center: {x: -0.00893341, y: 0.9640196, z: 0}
+--- !u!114 &-2618609119744281398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512516582150874022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0471d24099ca2a4d86b67a33aac4d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 6242114987364228851}
 --- !u!1 &6948244295172934588
 GameObject:
   m_ObjectHideFlags: 0
