@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float maxHealth;
     protected Transform player;
     public Transform Player { get { return player; } set { player = value; } }
+    [SerializeField] protected Vector3 randomBorder;
     [SerializeField] protected List<Vector3> rout;
     protected float currentHealth;
     [SerializeField] protected float shootingTime;
@@ -42,7 +43,12 @@ public class Enemy : MonoBehaviour
     }
     public virtual void AddToRout(Transform value)
     {
-        rout.Add(value.position);
+        rout.Add(GetRandomPlaceNearPoint(value.position));
+    }
+
+    public virtual Vector3 GetRandomPlaceNearPoint(Vector3 pos)
+    {
+        return pos;
     }
 }
 public enum EnemyDifficult { Easy,Medium,Hard };

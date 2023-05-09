@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    [SerializeField] private Gun activeGun;
 
-    [SerializeField]
-    private float rotationControll;
+    [SerializeField] private float rotationControll;
     [SerializeField] private Vector2 verticalLimit;
     [SerializeField] private Vector2 horizontalLimit;
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTouchDown(Vector3 startPos)
     {
-
+        activeGun.StartVisual();
 
     }
 
@@ -50,12 +50,12 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = limitsChecker;
 
         prevDeltaPos = limitsChecker;
-        MiniGun.instance.Shoot();
+        activeGun.Shoot();
     }
 
     void OnTouchUp(Vector3 lastPos)
     {
-        
+        activeGun.StopVisual();
     }
 
 }

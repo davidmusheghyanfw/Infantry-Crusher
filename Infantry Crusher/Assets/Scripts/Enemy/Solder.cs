@@ -41,11 +41,12 @@ public class Solder : Enemy, IDestroyable
     private IEnumerator MoveToPointRoutine()
     {
         int index = 0;
-        while(true)
+        transform.LookAt(rout[index]);
+        while (true)
         {
             if (index < rout.Count)
             {
-                if (Vector3.Distance(transform.position, rout[index]) < 3f)
+                if (Vector3.Distance(transform.position, rout[index]) < 4f)
                 {
                     index++;
                     if (index < rout.Count) transform.LookAt(rout[index]);
@@ -88,14 +89,23 @@ public class Solder : Enemy, IDestroyable
         while (true)
         {
 
-            animator.Play("Gunplay");
+            animator.Play("Firing Rifle");
             yield return new WaitForSeconds(shootingTime);
         }
     }
     public override void AddToRout(Transform value)
     {
-        base.AddToRout(value);
+       rout.Add(GetRandomPlaceNearPoint(value.position));
     }
+    public override Vector3 GetRandomPlaceNearPoint(Vector3 pos)
+    {
+        pos += new Vector3(
+                Random.Range(-randomBorder.x, randomBorder.x),
+                0,
+                Random.Range(-randomBorder.z, randomBorder.z)
+            );
 
+        return pos;
+    }
 
 }

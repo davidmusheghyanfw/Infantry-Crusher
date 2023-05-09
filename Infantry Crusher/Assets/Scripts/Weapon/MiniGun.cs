@@ -6,7 +6,7 @@ public class MiniGun : Gun
 {
 
     public static MiniGun instance;
-
+    [SerializeField] private MiniGunVisual visual;
 
     Vector3 directionToCrosshair;
 
@@ -19,7 +19,7 @@ public class MiniGun : Gun
     {
         
     }
-    public override Vector3 GetDirection()
+    public override Vector3 GetulletDirection()
     {
         Vector3 direction = Camera.main.transform.forward;
 
@@ -39,13 +39,13 @@ public class MiniGun : Gun
 
     public override void Shoot()
     {
-        //directionToCrosshair = new Vector3(Screen.width / 2, Screen.height / 2, 10f);
-        //directionToCrosshair = Camera.main.ScreenToWorldPoint(directionToCrosshair);
-       
+        directionToCrosshair = new Vector3(Screen.width / 2, Screen.height / 2, 1000f);
+        directionToCrosshair = Camera.main.ScreenToWorldPoint(directionToCrosshair);
+
         if (LastShootTime + ShootDelay < Time.time)
         {
             ShootingSystem.Play();
-            Vector3 direction = GetDirection();
+            Vector3 direction = GetulletDirection();
 
             bool hit = Physics.Raycast(Camera.main.transform.position, direction, out RaycastHit target, float.MaxValue);
             
@@ -69,7 +69,7 @@ public class MiniGun : Gun
             }
             else
             {
-                StartCoroutine(SpawnTrail(trail, BulletSpawnPoint.position + GetDirection() * 100, Vector3.zero, false));
+                StartCoroutine(SpawnTrail(trail, BulletSpawnPoint.position + GetulletDirection() * 100, Vector3.zero, false));
 
                 LastShootTime = Time.time;
             }
@@ -100,5 +100,15 @@ public class MiniGun : Gun
         }
 
         Destroy(Trail.gameObject, Trail.time);
+    }
+
+    public override void StartVisual()
+    {
+        visual.StartFireVisual();
+    }
+
+    public override void StopVisual()
+    {
+        visual.StopFireVisual();
     }
 }

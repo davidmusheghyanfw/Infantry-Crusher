@@ -32,10 +32,18 @@ public class Gun : MonoBehaviour
        
     }
 
-    public virtual Vector3 GetDirection()
+    public virtual Vector3 GetulletDirection()
     {
         return Vector3.zero;
     }
 
+    public virtual void StartVisual()
+    {
+
+    }
+      public virtual void StopVisual()
+    {
+
+    }
     
 }

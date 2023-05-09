@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
     [SerializeField] EnemyPullDefinition pull;
     [SerializeField] List<EnemyData> allEnemies;
+    [SerializeField] private Vector3 randomSpawnPos;
     [SerializeField] List<Transform> spawnPos;
     [SerializeField] Transform centerPos;
     [SerializeField] Transform playerPos;
@@ -74,8 +75,10 @@ public class EnemyManager : MonoBehaviour
         {
             if (allEnemies[i].enemyType == inWave.enemyType && allEnemies[i].enemyDifficult == inWave.enemyDifficult)
             {
-
-                GameObject enemy = Instantiate(allEnemies[i].enemy.gameObject, waveSpawnPos, Quaternion.identity, this.transform);
+                Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-randomSpawnPos.x, randomSpawnPos.x),
+                                                0,
+                                                UnityEngine.Random.Range(-randomSpawnPos.z, randomSpawnPos.z));
+                GameObject enemy = Instantiate(allEnemies[i].enemy.gameObject, waveSpawnPos+randomPos, Quaternion.identity, this.transform);
                 enemy.transform.LookAt(centerPos);
                 Enemy script = enemy.GetComponent<Enemy>();
                 script.AddToRout(centerPos);
