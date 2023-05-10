@@ -15,15 +15,16 @@ public class Gun : MonoBehaviour
     protected ParticleSystem ImpactParticleSystem;
     [SerializeField]
     protected TrailRenderer BulletTrail;
-    [SerializeField]
-    protected float ShootDelay = 0.5f;
-    [SerializeField]
-    protected LayerMask Mask;
+    [SerializeField] 
+    protected BulletController bulletController;
     [SerializeField]
     protected float BulletSpeed = 100;
     [SerializeField]
     protected float BulletDamage = 50;
 
+    [SerializeField]
+    protected float ShootDelay = 0.5f;
+  
     protected float LastShootTime;
 
   

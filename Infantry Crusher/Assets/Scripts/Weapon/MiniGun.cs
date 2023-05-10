@@ -39,40 +39,49 @@ public class MiniGun : Gun
 
     public override void Shoot()
     {
-        directionToCrosshair = new Vector3(Screen.width / 2, Screen.height / 2, 1000f);
-        directionToCrosshair = Camera.main.ScreenToWorldPoint(directionToCrosshair);
+        directionToCrosshair = new Vector3(Screen.width / 2, Screen.height / 2, 50f);
+        Vector3 directionToCrosshairWorldPoint = Camera.main.ScreenToWorldPoint(directionToCrosshair);
 
         if (LastShootTime + ShootDelay < Time.time)
         {
             ShootingSystem.Play();
-            Vector3 direction = GetulletDirection();
 
-            bool hit = Physics.Raycast(Camera.main.transform.position, direction, out RaycastHit target, float.MaxValue);
-            
-            directionToCrosshair = target.point - BulletSpawnPoint.position;
-            BulletSpawnPoint.rotation = Quaternion.LookRotation(directionToCrosshair);
+            Vector3 angle = directionToCrosshairWorldPoint - BulletSpawnPoint.position;
+            BulletSpawnPoint.rotation = Quaternion.LookRotation(angle);
+            Bullet bullet = bulletController.GetSpareBullet();
+            bullet.transform.position = BulletSpawnPoint.position;
+            bullet.transform.rotation = Quaternion.LookRotation(angle);
+            bullet.BulletInit(BulletDamage, angle.normalized,false);
 
-            TrailRenderer trail = Instantiate(BulletTrail, BulletSpawnPoint.position, Quaternion.identity);
-            if (hit)
-            {
-                if (target.transform.TryGetComponent(out IDestroyable destroyable))
-                {
-                    StartCoroutine(SpawnTrail(trail, target.point, target.normal, false));
-                    destroyable.Damaged(BulletDamage);
-                }
-               
-                else
-                    StartCoroutine(SpawnTrail(trail, target.point, target.normal, true));
+            LastShootTime = Time.time;
+            //Vector3 direction = GetulletDirection();
 
-                LastShootTime = Time.time;
+            //bool hit = Physics.Raycast(Camera.main.transform.position, direction, out RaycastHit target, float.MaxValue);
 
-            }
-            else
-            {
-                StartCoroutine(SpawnTrail(trail, BulletSpawnPoint.position + GetulletDirection() * 100, Vector3.zero, false));
+            //directionToCrosshair = target.point - BulletSpawnPoint.position;
+            //BulletSpawnPoint.rotation = Quaternion.LookRotation(directionToCrosshair);
 
-                LastShootTime = Time.time;
-            }
+            //TrailRenderer trail = Instantiate(BulletTrail, BulletSpawnPoint.position, Quaternion.identity);
+            //if (hit)
+            //{
+            //    if (target.transform.TryGetComponent(out IDestroyable destroyable))
+            //    {
+            //        StartCoroutine(SpawnTrail(trail, target.point, target.normal, false));
+            //        destroyable.Damaged(BulletDamage);
+            //    }
+
+            //    else
+            //        StartCoroutine(SpawnTrail(trail, target.point, target.normal, true));
+
+            //    LastShootTime = Time.time;
+
+            //}
+            //else
+            //{
+            //    StartCoroutine(SpawnTrail(trail, BulletSpawnPoint.position + GetulletDirection() * 100, Vector3.zero, false));
+
+            //    LastShootTime = Time.time;
+            //}
         }
 
     }
