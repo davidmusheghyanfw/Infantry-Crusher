@@ -101,6 +101,7 @@ public class EnemyManager : MonoBehaviour
 
     private void CalculateEnemyCountInLevel()
     {
+        enemyCount = 0;
         for (int i = 0; i < pull.wavePulls.Count; i++)
         {
             for (int j = 0; j < pull.wavePulls[i].inWaves.Count; j++)

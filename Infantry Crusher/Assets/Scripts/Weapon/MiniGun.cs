@@ -51,6 +51,7 @@ public class MiniGun : Gun
             Bullet bullet = bulletController.GetSpareBullet();
             bullet.transform.position = BulletSpawnPoint.position;
             bullet.transform.rotation = BulletSpawnPoint.rotation;
+            bullet.gameObject.SetActive(true);
             bullet.BulletInit(BulletDamage, bullet.transform.position.normalized,false);
 
             LastShootTime = Time.time;

@@ -17,7 +17,7 @@ public class BulletController : MonoBehaviour
         {
             if (!bullets[i].gameObject.activeSelf)
             {
-                bullets[i].gameObject.SetActive(true);
+
                 return bullets[i];
             }
         }

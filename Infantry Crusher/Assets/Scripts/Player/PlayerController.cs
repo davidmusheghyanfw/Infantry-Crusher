@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour, IDestroyable
     public float Health { get { return health; } }
 
     Vector3 deltaPos;
-    Vector3 prevDeltaPos = Vector3.zero;
+    Vector3 prevRot = Vector3.zero;
     Vector3 limitsChecker = Vector3.zero;
+    Vector3 overallRot = Vector3.zero;
     private Vector3 cursor;
 
     private void Awake()
@@ -45,18 +46,22 @@ public class PlayerController : MonoBehaviour, IDestroyable
     {
         if (GameManager.instance.IsLevelStart)
         {
-            cursor = cursorPos;
+            //cursor = cursorPos;
+            //deltaPos = new Vector3(-cursorPos.y, cursorPos.x, 0) * rotationControll * Time.deltaTime;
+            //limitsChecker = deltaPos + transform.eulerAngles;
+
+            //transform.eulerAngles = limitsChecker;
+
+
             deltaPos = new Vector3(-cursorPos.y, cursorPos.x, 0) * rotationControll * Time.deltaTime;
-            limitsChecker = deltaPos + transform.eulerAngles;
+            overallRot += deltaPos;
+            if (overallRot.x < verticalLimit.x) overallRot.x = prevRot.x;
+            if (overallRot.x > verticalLimit.y) overallRot.x = prevRot.x;
+            if (overallRot.y < horizontalLimit.x) overallRot.y = prevRot.y;
+            if (overallRot.y > horizontalLimit.y) overallRot.y = prevRot.y;
 
-            //if (limitsChecker.x < horizontalLimit.x) limitsChecker.x = prevDeltaPos.x;
-            //if (limitsChecker.x > horizontalLimit.y) limitsChecker.x = prevDeltaPos.y;
-            //if (limitsChecker.y < verticalLimit.x) limitsChecker.y = prevDeltaPos.x;
-            //if (limitsChecker.y > verticalLimit.y) limitsChecker.y = prevDeltaPos.y;
-
-            transform.eulerAngles = limitsChecker;
-
-            prevDeltaPos = limitsChecker;
+            transform.rotation = Quaternion.Euler(overallRot);
+            prevRot = overallRot;
             activeGun.Shoot();
         }
     }

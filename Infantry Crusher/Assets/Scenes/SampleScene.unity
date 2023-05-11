@@ -17928,6 +17928,21 @@ PrefabInstance:
       propertyPath: activeGun
       value: 
       objectReference: {fileID: 1728185978}
+    - target: {fileID: 982835698798752749, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
+        type: 3}
+      propertyPath: verticalLimit.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 982835698798752749, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
+        type: 3}
+      propertyPath: rotationControll
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 982835698798752749, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
+        type: 3}
+      propertyPath: horizontalLimit.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 982835698798752750, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
         type: 3}
       propertyPath: m_RootOrder
@@ -17990,23 +18005,33 @@ PrefabInstance:
       objectReference: {fileID: 982835697682762745}
     - target: {fileID: 2099686709683887185, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
         type: 3}
+      propertyPath: ShootDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099686709683887185, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
+        type: 3}
+      propertyPath: AddBulletSpread
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099686709683887185, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
+        type: 3}
       propertyPath: bulletController
       value: 
       objectReference: {fileID: 1669892778}
     - target: {fileID: 7980268396851137670, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99987113
+      value: 0.99965733
       objectReference: {fileID: 0}
     - target: {fileID: 7980268396851137670, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.016056301
+      value: -0.026176924
       objectReference: {fileID: 0}
     - target: {fileID: 7980268396851137670, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.84
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53006ba34ba4e0f4a95d6cfbe6faebd9, type: 3}
