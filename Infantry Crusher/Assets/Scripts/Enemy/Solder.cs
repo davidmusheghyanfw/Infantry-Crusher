@@ -11,7 +11,10 @@ public class Solder : Enemy, IDestroyable
     }
     public override void Die()
     {
-        Destroy(gameObject);
+        animator.SetBool("IsDied", true);
+        StopMoveToPointRoutine();
+        StopShootingRoutine();
+        Destroy(gameObject, 5);
     }
 
     public void Damaged(float damage)
@@ -85,11 +88,14 @@ public class Solder : Enemy, IDestroyable
 
     public override IEnumerator ShootingRoutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         while (true)
         {
 
             animator.Play("Firing Rifle");
+            Bullet obj = Instantiate(bullet, shootPos.position, Quaternion.identity);
+            obj.transform.LookAt(Camera.main.transform);
+            obj.BulletInit(damage, Camera.main.transform.position, false);
             yield return new WaitForSeconds(shootingTime);
         }
     }

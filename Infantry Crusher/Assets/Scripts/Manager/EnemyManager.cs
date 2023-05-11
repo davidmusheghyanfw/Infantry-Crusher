@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        InitEnemyManager();
+      
     }
     public void InitEnemyManager()
     {
@@ -78,12 +78,13 @@ public class EnemyManager : MonoBehaviour
                 Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-randomSpawnPos.x, randomSpawnPos.x),
                                                 0,
                                                 UnityEngine.Random.Range(-randomSpawnPos.z, randomSpawnPos.z));
-                GameObject enemy = Instantiate(allEnemies[i].enemy.gameObject, waveSpawnPos+randomPos, Quaternion.identity, this.transform);
+                Enemy enemy = Instantiate(allEnemies[i].enemy, waveSpawnPos+randomPos, Quaternion.identity, this.transform);
                 enemy.transform.LookAt(centerPos);
-                Enemy script = enemy.GetComponent<Enemy>();
-                script.AddToRout(centerPos);
-                script.Player = playerPos;
-                spawnedEnemies.Add(script);
+
+                enemy.AddToRout(centerPos);
+                enemy.Player = playerPos;
+                enemy.InitEnemy();
+                spawnedEnemies.Add(enemy);
                 return;
             }
         }

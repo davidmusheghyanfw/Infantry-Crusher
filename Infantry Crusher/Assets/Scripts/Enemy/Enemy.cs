@@ -12,12 +12,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected List<Vector3> rout;
     protected float currentHealth;
     [SerializeField] protected float shootingTime;
+    [SerializeField] protected float damage;
+    [SerializeField] protected Bullet bullet;
+    [SerializeField] protected Transform shootPos;
 
-    private void Start()
-    {
-        InitEnemy();
-    }
-
+   
     public virtual void InitEnemy()
     {
         currentHealth = maxHealth;

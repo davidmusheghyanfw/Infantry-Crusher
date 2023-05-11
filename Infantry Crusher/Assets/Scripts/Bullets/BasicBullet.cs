@@ -12,7 +12,7 @@ public class BasicBullet : Bullet
     }
     public override void FlyingProcess()
     {
-        rb.velocity = transform.forward * 200f;
+        rb.velocity = transform.forward * 100f;
     }
 
     private IEnumerator LifeTImeRoutine()

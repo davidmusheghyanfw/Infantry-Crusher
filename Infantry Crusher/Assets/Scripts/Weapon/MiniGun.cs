@@ -39,19 +39,19 @@ public class MiniGun : Gun
 
     public override void Shoot()
     {
-        directionToCrosshair = new Vector3(Screen.width / 2, Screen.height / 2, 50f);
+        directionToCrosshair = new Vector3(Screen.width / 2, Screen.height / 2, 1000f);
         Vector3 directionToCrosshairWorldPoint = Camera.main.ScreenToWorldPoint(directionToCrosshair);
 
         if (LastShootTime + ShootDelay < Time.time)
         {
             ShootingSystem.Play();
 
-            Vector3 angle = directionToCrosshairWorldPoint - BulletSpawnPoint.position;
-            BulletSpawnPoint.rotation = Quaternion.LookRotation(angle);
+            //Vector3 angle = directionToCrosshairWorldPoint - BulletSpawnPoint.position;
+            //BulletSpawnPoint.rotation = Quaternion.LookRotation(angle);
             Bullet bullet = bulletController.GetSpareBullet();
             bullet.transform.position = BulletSpawnPoint.position;
-            bullet.transform.rotation = Quaternion.LookRotation(angle);
-            bullet.BulletInit(BulletDamage, angle.normalized,false);
+            bullet.transform.rotation = BulletSpawnPoint.rotation;
+            bullet.BulletInit(BulletDamage, bullet.transform.position.normalized,false);
 
             LastShootTime = Time.time;
             //Vector3 direction = GetulletDirection();
