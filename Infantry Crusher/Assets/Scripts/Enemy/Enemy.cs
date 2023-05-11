@@ -6,11 +6,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected Animator animator;
     [SerializeField] protected float maxHealth;
+    [SerializeField] protected float currentHealth;
     protected Transform player;
     public Transform Player { get { return player; } set { player = value; } }
     [SerializeField] protected Vector3 randomBorder;
     [SerializeField] protected List<Vector3> rout;
-    protected float currentHealth;
     [SerializeField] protected float shootingTime;
     [SerializeField] protected float damage;
     [SerializeField] protected Bullet bullet;

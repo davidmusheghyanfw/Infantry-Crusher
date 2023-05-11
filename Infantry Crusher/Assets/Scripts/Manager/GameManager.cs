@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         MenuView.instance.InitMenuView();
         GameView.instance.InitGameView();
+        LevelEndView.instance.InitLeveEndView();
         InLevel();
     }
     public void InLevel()
@@ -44,7 +45,15 @@ public class GameManager : MonoBehaviour
       
     }
 
+    public void LevelWin()
+    {
+        InLevel();
+    }
 
+    public void LeveLoose()
+    {
+
+    }
 
     private void Pause()
     {

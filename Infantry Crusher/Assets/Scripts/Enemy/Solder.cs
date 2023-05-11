@@ -11,14 +11,19 @@ public class Solder : Enemy, IDestroyable
     }
     public override void Die()
     {
+       
+        gameObject.GetComponent<Collider>().enabled = false;
         animator.SetBool("IsDied", true);
         StopMoveToPointRoutine();
         StopShootingRoutine();
+     
+        GameView.instance.IncreaseProgressBar();
         Destroy(gameObject, 5);
     }
 
     public void Damaged(float damage)
     {
+        if (currentHealth <= 0) return;
        currentHealth -= damage;
        if(currentHealth <= 0) Die();
     }

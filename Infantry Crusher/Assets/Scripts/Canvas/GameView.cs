@@ -31,9 +31,16 @@ public class GameView : MonoBehaviour
     private void InitProgressBar()
     {
         progressBar.minValue = progressBar.value = 0;
-        progressBar.maxValue = 100;
+        progressBar.maxValue = EnemyManager.instance.EnemyCount;
     }
-
+    public void IncreaseProgressBar()
+    {
+        progressBar.value++;
+        if(progressBar.value == progressBar.maxValue)
+        {
+            LevelEndView.instance.ActiveLevelWin();
+        }
+    }
     public void ChangeHealtBarValue()
     {
         healthBar.value = PlayerController.instance.Health;

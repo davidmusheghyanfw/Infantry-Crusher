@@ -14,6 +14,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] Transform playerPos;
     [SerializeField] private int nextWaveTime;
     [SerializeField] List<Enemy> spawnedEnemies;
+    private int enemyCount;
+    public int EnemyCount { get { return enemyCount; } }
 
     private Vector3 waveSpawnPos;
     private void Awake()
@@ -26,6 +28,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void InitEnemyManager()
     {
+        CalculateEnemyCountInLevel();
         StartEnemySpawnRoutine();
     }
 
@@ -94,5 +97,17 @@ public class EnemyManager : MonoBehaviour
     private Transform GetSpawnPos()
     {
         return spawnPos[UnityEngine.Random.Range(0, spawnPos.Count)];
+    }
+
+    private void CalculateEnemyCountInLevel()
+    {
+        for (int i = 0; i < pull.wavePulls.Count; i++)
+        {
+            for (int j = 0; j < pull.wavePulls[i].inWaves.Count; j++)
+            {
+                enemyCount += pull.wavePulls[i].inWaves[j].Count;
+            }
+        }
+        
     }
 }
