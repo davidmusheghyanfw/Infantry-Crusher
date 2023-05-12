@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lofelt.NiceVibrations;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    
 
     private bool isLevelStart;
     public bool IsLevelStart { get { return isLevelStart; } }
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         isLevelStart = false;
         MenuView.instance.SetActive(true);
-      
+
     }
 
     public void LevelStart()

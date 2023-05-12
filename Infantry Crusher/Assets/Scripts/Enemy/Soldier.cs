@@ -1,3 +1,4 @@
+using Lofelt.NiceVibrations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +32,7 @@ public class Soldier : Enemy, IDestroyable
     {
         if (currentHealth <= 0) return;
         currentHealth -= damage;
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.SoftImpact);
         healthBar.value = currentHealth;
         if(!canvas.isActiveAndEnabled) canvas.enabled = true;
         if (currentHealth <= 0) Die();
