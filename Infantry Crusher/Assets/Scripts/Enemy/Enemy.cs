@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] protected Animator animator;
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float currentHealth;
+    [SerializeField] protected Slider healthBar;
     protected Transform player;
     public Transform Player { get { return player; } set { player = value; } }
     [SerializeField] protected Vector3 randomBorder;
@@ -15,7 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float damage;
     [SerializeField] protected Bullet bullet;
     [SerializeField] protected Transform shootPos;
-
+    [SerializeField] protected Canvas canvas;
    
     public virtual void InitEnemy()
     {

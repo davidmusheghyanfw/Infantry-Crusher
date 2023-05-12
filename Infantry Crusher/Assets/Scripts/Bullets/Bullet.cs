@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     protected bool is≈xplosive;
     protected Vector3 direction;
     [SerializeField] protected Rigidbody rb;
+    [SerializeField] protected TrailRenderer trailRenderer;
+    public TrailRenderer TrailRenderer { get { return trailRenderer; } }
 
     public virtual void BulletInit(float _damage, Vector3 _direction, bool _isExplosive)
     {

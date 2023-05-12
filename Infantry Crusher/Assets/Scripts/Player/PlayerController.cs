@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
             if (overallRot.y > horizontalLimit.y) overallRot.y = prevRot.y;
 
             transform.rotation = Quaternion.Euler(overallRot);
+            CameraController.instance.UpdateCameraRotation(transform.rotation);
             prevRot = overallRot;
             activeGun.Shoot();
         }
@@ -75,5 +76,10 @@ public class PlayerController : MonoBehaviour, IDestroyable
     {
         health -= damage;
         GameView.instance.ChangeHealtBarValue();
+    }
+
+    GameObject IDestroyable.gameObject()
+    {
+        return gameObject;
     }
 }

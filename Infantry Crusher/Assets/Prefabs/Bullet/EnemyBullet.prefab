@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 291166815092466027}
+  trailRenderer: {fileID: 2771515943871292782}
 --- !u!1 &1118800196535030523
 GameObject:
   m_ObjectHideFlags: 0

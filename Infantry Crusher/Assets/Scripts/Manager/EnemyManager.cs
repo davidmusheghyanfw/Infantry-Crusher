@@ -79,13 +79,14 @@ public class EnemyManager : MonoBehaviour
             if (allEnemies[i].enemyType == inWave.enemyType && allEnemies[i].enemyDifficult == inWave.enemyDifficult)
             {
                 Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-randomSpawnPos.x, randomSpawnPos.x),
-                                                0,
+                                                allEnemies[i].enemyPrefab.transform.position.y,
                                                 UnityEngine.Random.Range(-randomSpawnPos.z, randomSpawnPos.z));
-                Enemy enemy = Instantiate(allEnemies[i].enemy, waveSpawnPos+randomPos, Quaternion.identity, this.transform);
+                Enemy enemy = Instantiate(allEnemies[i].enemyPrefab, waveSpawnPos+randomPos, Quaternion.identity, this.transform);
                 enemy.transform.LookAt(centerPos);
 
                 enemy.AddToRout(centerPos);
                 enemy.Player = playerPos;
+                PointerManager.Instance.AddToList(enemy);
                 enemy.InitEnemy();
                 spawnedEnemies.Add(enemy);
                 return;

@@ -2,21 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Solder : Enemy, IDestroyable
+public class Soldier : Enemy, IDestroyable
 {
     public override void InitEnemy()
     {
         base.InitEnemy();
+        canvas.enabled = false;
+        healthBar.minValue = 0;
+        healthBar.value = healthBar.maxValue = maxHealth;
+
         Move();
     }
     public override void Die()
     {
        
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
         gameObject.GetComponent<Collider>().enabled = false;
-        animator.SetBool("IsDied", true);
         StopMoveToPointRoutine();
         StopShootingRoutine();
-     
+      
+        animator.Play("Die");
+        PointerManager.Instance.RemoveFromList(this);
         GameView.instance.IncreaseProgressBar();
         Destroy(gameObject, 5);
     }
@@ -24,8 +30,10 @@ public class Solder : Enemy, IDestroyable
     public void Damaged(float damage)
     {
         if (currentHealth <= 0) return;
-       currentHealth -= damage;
-       if(currentHealth <= 0) Die();
+        currentHealth -= damage;
+        healthBar.value = currentHealth;
+        if(!canvas.isActiveAndEnabled) canvas.enabled = true;
+        if (currentHealth <= 0) Die();
     }
 
     public override void Move()
@@ -66,7 +74,8 @@ public class Solder : Enemy, IDestroyable
             //    animator.SetBool("IsStopping", true);
             //    StopMoveToPointRoutine();
             //}
-
+            canvas.transform.LookAt(canvas.transform.position + Camera.main.transform.rotation * -Vector3.back,
+            Camera.main.transform.rotation * -Vector3.down);
             yield return new WaitForEndOfFrame();
         }
 
@@ -75,7 +84,7 @@ public class Solder : Enemy, IDestroyable
     public override void InShootingPlace()
     {
         animator.SetBool("IsStopping", true);
-        StartShootingRoutine();
+        //StartShootingRoutine();
     }
 
     private void StartShootingRoutine()
@@ -93,15 +102,16 @@ public class Solder : Enemy, IDestroyable
 
     public override IEnumerator ShootingRoutine()
     {
+        
         yield return new WaitForSeconds(1f);
         while (true)
         {
-
             animator.Play("Firing Rifle");
             Bullet obj = Instantiate(bullet, shootPos.position, Quaternion.identity);
             obj.transform.LookAt(Camera.main.transform);
             obj.BulletInit(damage, Camera.main.transform.position, false);
             yield return new WaitForSeconds(shootingTime);
+           
         }
     }
     public override void AddToRout(Transform value)
@@ -112,11 +122,15 @@ public class Solder : Enemy, IDestroyable
     {
         pos += new Vector3(
                 Random.Range(-randomBorder.x, randomBorder.x),
-                0,
+                transform.position.y,
                 Random.Range(-randomBorder.z, randomBorder.z)
             );
 
         return pos;
     }
 
+    GameObject IDestroyable.gameObject()
+    {
+        return gameObject;
+    }
 }
