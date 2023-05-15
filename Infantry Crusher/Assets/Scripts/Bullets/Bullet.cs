@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     protected float damage;
-    protected bool is≈xplosive;
+    protected bool isExplosive;
     protected Vector3 direction;
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected TrailRenderer trailRenderer;
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     {
         damage = _damage;
         direction = _direction;
-        is≈xplosive = _isExplosive;
+        isExplosive = _isExplosive;
     }
     public virtual void FlyingProcess()
     {
