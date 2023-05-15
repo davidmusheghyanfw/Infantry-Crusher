@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: c24b8dfe682277d46a1dccc9adb18ae0, type: 2}
 --- !u!1001 &693531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &17643125
 BoxCollider:
@@ -9009,6 +9009,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -10148,6 +10156,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -10976,6 +10992,14 @@ PrefabInstance:
     - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_Name
       value: Tent (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
@@ -12157,6 +12181,14 @@ PrefabInstance:
     - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_Name
       value: Tent (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
@@ -14419,6 +14451,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -14596,6 +14636,14 @@ PrefabInstance:
     - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_Name
       value: Tent (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
@@ -15440,6 +15488,14 @@ PrefabInstance:
     - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_Name
       value: Tent (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
@@ -16642,6 +16698,14 @@ PrefabInstance:
     - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_Name
       value: Tent (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder
@@ -19293,6 +19357,14 @@ PrefabInstance:
     - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_Name
       value: Tent (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: a30c65c9d5efe534e87d2cafa10d4c3c, type: 3}
       propertyPath: m_RootOrder

@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 1544262836527963863}
   - component: {fileID: 1544262836527963850}
   - component: {fileID: 1544262836527963861}
+  - component: {fileID: 4088714156437934543}
   m_Layer: 0
   m_Name: Soldier 1
   m_TagString: Untagged
@@ -682,6 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3990281534307199906}
+  navMesh: {fileID: 4088714156437934543}
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 4722671210598162644}
@@ -692,6 +694,28 @@ MonoBehaviour:
   bullet: {fileID: 5304774090230231546, guid: 3f6e6c0e75b310b428ce50cdd42869ab, type: 3}
   shootPos: {fileID: 1885299695354113795}
   canvas: {fileID: 836373655274734153}
+--- !u!195 &4088714156437934543
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544262836527963857}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.15
+  m_Speed: 0
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1544262836972784429
 GameObject:
   m_ObjectHideFlags: 0

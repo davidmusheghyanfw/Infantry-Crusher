@@ -40,9 +40,9 @@ public class Soldier : Enemy, IDestroyable
 
     public override void Move()
     {
-        if (rout.Count < 0) return;
-        StartMoveToPointRoutine();
-        
+        //if (rout.Count < 0) return;
+        //StartMoveToPointRoutine();
+        navMesh.SetDestination(player.position);
     }
     private void StartMoveToPointRoutine()
     {
