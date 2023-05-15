@@ -32,7 +32,7 @@ public class Soldier : Enemy, IDestroyable
     {
         if (currentHealth <= 0) return;
         currentHealth -= damage;
-        HapticPatterns.PlayPreset(HapticPatterns.PresetType.SoftImpact);
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
         healthBar.value = currentHealth;
         if(!canvas.isActiveAndEnabled) canvas.enabled = true;
         if (currentHealth <= 0) Die();

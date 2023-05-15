@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour, IDestroyable
     [SerializeField] private Gun activeGun;
 
     [SerializeField] private float rotationControll;
+    public float RotationControll { get { return rotationControll; } set { rotationControll = value; } }
+
     [SerializeField] private Vector2 verticalLimit;
     [SerializeField] private Vector2 horizontalLimit;
 
@@ -39,12 +41,12 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     void OnTouchDown(Vector3 startPos)
     {
-        if(GameManager.instance.IsLevelStart)activeGun.StartVisual();
+        if(GameManager.instance.IsPlayerInteractble)activeGun.StartVisual();
     }
 
     void OnTouchDrag(Vector3 currentPos, Vector3 cursorPos)
     {
-        if (GameManager.instance.IsLevelStart)
+        if (GameManager.instance.IsPlayerInteractble)
         {
             //cursor = cursorPos;
             //deltaPos = new Vector3(-cursorPos.y, cursorPos.x, 0) * rotationControll * Time.deltaTime;
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     void OnTouchUp(Vector3 lastPos)
     {
-        if (GameManager.instance.IsLevelStart) activeGun.StopVisual();
+        if (GameManager.instance.IsPlayerInteractble) activeGun.StopVisual();
     }
 
     public void Damaged(float damage)

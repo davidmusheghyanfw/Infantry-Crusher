@@ -36,7 +36,7 @@ public class Point : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(HideProcess());
     }
-
+   
     IEnumerator ShowProcess()
     {
         _image.enabled = true;

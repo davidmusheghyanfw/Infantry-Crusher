@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     
 
-    private bool isLevelStart;
-    public bool IsLevelStart { get { return isLevelStart; } }
+    private bool isPlayerInteractble;
+    public bool IsPlayerInteractble { get { return isPlayerInteractble; } set { isPlayerInteractble = value; } }
 
     private void Awake()
     {
@@ -26,11 +26,12 @@ public class GameManager : MonoBehaviour
         MenuView.instance.InitMenuView();
         GameView.instance.InitGameView();
         LevelEndView.instance.InitLeveEndView();
+        DebugView.instance.InitDebug();
         InLevel();
     }
     public void InLevel()
     {
-        isLevelStart = false;
+        isPlayerInteractble = false;
         MenuView.instance.SetActive(true);
 
     }
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
         EnemyManager.instance.InitEnemyManager();
         GameView.instance.SetActive(true);
         GameView.instance.InitLevelUI();
-        isLevelStart = true;
+        isPlayerInteractble = true;
     }
     public void GameStart()
     {

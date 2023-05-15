@@ -1,3 +1,4 @@
+using Lofelt.NiceVibrations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class MiniGun : Gun
 
     private void Start()
     {
-        
+        DynamicCrosshair.instance.SetShootingDelay(ShootDelay);
     }
     public override Vector3 GetulletDirection()
     {
@@ -45,7 +46,8 @@ public class MiniGun : Gun
         if (LastShootTime + ShootDelay < Time.time)
         {
             ShootingSystem.Play();
-
+            DynamicCrosshair.instance.SetCrosshairSize();
+            HapticPatterns.PlayPreset(HapticPatterns.PresetType.SoftImpact);
             //Vector3 angle = directionToCrosshairWorldPoint - BulletSpawnPoint.position;
             //BulletSpawnPoint.rotation = Quaternion.LookRotation(angle);
             Bullet bullet = bulletController.GetSpareBullet();
@@ -88,30 +90,30 @@ public class MiniGun : Gun
 
     }
 
-    private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint, Vector3 HitNormal, bool MadeImpact)
-    {
+    //private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint, Vector3 HitNormal, bool MadeImpact)
+    //{
 
-        Vector3 startPosition = Trail.transform.position;
-        float distance = Vector3.Distance(Trail.transform.position, HitPoint);
-        float remainingDistance = distance;
+    //    Vector3 startPosition = Trail.transform.position;
+    //    float distance = Vector3.Distance(Trail.transform.position, HitPoint);
+    //    float remainingDistance = distance;
 
-        while (remainingDistance > 0)
-        {
-            Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
+    //    while (remainingDistance > 0)
+    //    {
+    //        Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
 
-            remainingDistance -= BulletSpeed * Time.deltaTime;
+    //        remainingDistance -= BulletSpeed * Time.deltaTime;
 
-            yield return null;
-        }
+    //        yield return null;
+    //    }
 
-        Trail.transform.position = HitPoint;
-        if (MadeImpact)
-        {
-            Instantiate(ImpactParticleSystem, HitPoint, Quaternion.LookRotation(HitNormal));
-        }
+    //    Trail.transform.position = HitPoint;
+    //    if (MadeImpact)
+    //    {
+    //        Instantiate(ImpactParticleSystem, HitPoint, Quaternion.LookRotation(HitNormal));
+    //    }
 
-        Destroy(Trail.gameObject, Trail.time);
-    }
+    //    Destroy(Trail.gameObject, Trail.time);
+    //}
 
     public override void StartVisual()
     {
