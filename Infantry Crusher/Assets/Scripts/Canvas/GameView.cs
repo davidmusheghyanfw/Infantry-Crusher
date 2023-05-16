@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class GameView : MonoBehaviour
     public static GameView instance;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider progressBar;
+    [SerializeField] private TMP_Text currentLevelTxt;
+    [SerializeField] private TMP_Text nextLevelTxt;
     private void Awake()
     {
         instance = this;
@@ -30,6 +33,8 @@ public class GameView : MonoBehaviour
     }
     private void InitProgressBar()
     {
+        currentLevelTxt.text = DataManager.instance.GetLevelNumber().ToString();
+        nextLevelTxt.text = (DataManager.instance.GetLevelNumber()+1).ToString();
         progressBar.minValue = progressBar.value = 0;
         progressBar.maxValue = EnemyManager.instance.EnemyCount;
     }
@@ -38,6 +43,7 @@ public class GameView : MonoBehaviour
         progressBar.value++;
         if(progressBar.value == progressBar.maxValue)
         {
+            GameManager.instance.IsPlayerInteractble = false;
             LevelEndView.instance.ActiveLevelWin();
         }
     }

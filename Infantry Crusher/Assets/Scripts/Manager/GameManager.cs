@@ -50,12 +50,13 @@ public class GameManager : MonoBehaviour
 
     public void LevelWin()
     {
+        DataManager.instance.IncreaseLevelNumber();
         InLevel();
     }
 
     public void LeveLoose()
     {
-
+        
     }
 
     private void Pause()

@@ -1070,7 +1070,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1110,17 +1110,17 @@ NavMeshAgent:
   m_GameObject: {fileID: 3615625112420009835}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.15
-  m_Speed: 0
+  m_Radius: 0.1
+  m_Speed: 0.1
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 120.55
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
+  m_Height: 1.45
+  m_BaseOffset: 0.95
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &3615625113486730670
@@ -1504,6 +1504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 3615625112420009844}
   animator: {fileID: 7523658829320717363}
+  navMesh: {fileID: 8842123520766288036}
 --- !u!1 &3894097191405282057
 GameObject:
   m_ObjectHideFlags: 0

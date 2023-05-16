@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     void OnTouchUp(Vector3 lastPos)
     {
-        if (GameManager.instance.IsPlayerInteractble) activeGun.StopVisual();
+        activeGun.StopVisual();
     }
 
     public void Damaged(float damage)

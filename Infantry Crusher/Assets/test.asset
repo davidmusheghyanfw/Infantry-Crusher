@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c77db9092469a649b8e41c851a2d874, type: 3}
-  m_Name: EnemyPull 1
+  m_Name: test
   m_EditorClassIdentifier: 
   wavePulls:
   - inWaves:

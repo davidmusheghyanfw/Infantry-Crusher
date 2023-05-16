@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Soldier : Enemy, IDestroyable
 {
+    private Vector3 worldDeltaPosition = Vector3.zero;
     public override void InitEnemy()
     {
         base.InitEnemy();
@@ -16,8 +17,9 @@ public class Soldier : Enemy, IDestroyable
     }
     public override void Die()
     {
-       
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        canvas.enabled = false;
+        //navMesh.enabled = false;
+        //gameObject.GetComponent<Rigidbody>().isKinematic = true;
         gameObject.GetComponent<Collider>().enabled = false;
         StopMoveToPointRoutine();
         StopShootingRoutine();
@@ -41,7 +43,8 @@ public class Soldier : Enemy, IDestroyable
     public override void Move()
     {
         //if (rout.Count < 0) return;
-        //StartMoveToPointRoutine();
+        navMesh.updatePosition = false;
+        StartMoveToPointRoutine();
         navMesh.SetDestination(player.position);
     }
     private void StartMoveToPointRoutine()
@@ -62,15 +65,22 @@ public class Soldier : Enemy, IDestroyable
         transform.LookAt(rout[index]);
         while (true)
         {
-            if (index < rout.Count)
+            worldDeltaPosition = navMesh.nextPosition - transform.position;
+
+            if (worldDeltaPosition.magnitude > navMesh.radius)
             {
-                if (Vector3.Distance(transform.position, rout[index]) < 4f)
-                {
-                    index++;
-                    if (index < rout.Count) transform.LookAt(rout[index]);
-                    else transform.LookAt(Player);
-                }
+                navMesh.nextPosition = transform.position + 0.9f * worldDeltaPosition;
+                navMesh.SetDestination(player.position);
             }
+            //if (index < rout.Count)
+            //{
+            //    if (Vector3.Distance(transform.position, rout[index]) < 4f)
+            //    {
+            //        index++;
+            //        if (index < rout.Count) transform.LookAt(rout[index]);
+            //        else transform.LookAt(Player);
+            //    }
+            //}
             //else if (Vector3.Distance(transform.position, Player.position) < 5f)
             //{
             //    animator.SetBool("IsStopping", true);
@@ -101,6 +111,7 @@ public class Soldier : Enemy, IDestroyable
     }
 
     Coroutine ShootingRoutineC;
+   
 
     public override IEnumerator ShootingRoutine()
     {
