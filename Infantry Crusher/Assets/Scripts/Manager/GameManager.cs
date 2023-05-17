@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private void GameInit()
     {
         MenuView.instance.InitMenuView();
+        TabGroupManager.instance.InitTabGroupManager();
         GameView.instance.InitGameView();
         LevelEndView.instance.InitLeveEndView();
         DebugView.instance.InitDebug();
