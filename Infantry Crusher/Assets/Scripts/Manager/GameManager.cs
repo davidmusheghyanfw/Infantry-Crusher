@@ -68,4 +68,27 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    private void Restart()
+    {
+        GameInit();
+    }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            Debug.Break();
+        }
+        else if (Input.GetKeyDown("r"))
+        {
+            Restart();
+        }
+        else if (Input.GetKeyDown("w"))
+        {
+           
+        }
+    }
+#endif
 }

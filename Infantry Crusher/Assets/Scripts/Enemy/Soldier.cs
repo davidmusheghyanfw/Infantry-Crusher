@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soldier : Enemy, IDestroyable
+public class Soldier : Enemy
 {
+    
     private Vector3 worldDeltaPosition = Vector3.zero;
     public override void InitEnemy()
     {
@@ -18,9 +19,8 @@ public class Soldier : Enemy, IDestroyable
     public override void Die()
     {
         canvas.enabled = false;
-        //navMesh.enabled = false;
-        //gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        gameObject.GetComponent<Collider>().enabled = false;
+        navMesh.enabled = false;
+       
         StopMoveToPointRoutine();
         StopShootingRoutine();
       
@@ -30,12 +30,21 @@ public class Soldier : Enemy, IDestroyable
         Destroy(gameObject, 5);
     }
 
-    public void Damaged(float damage)
+    public void TakeDamage(float damage, EnemyBodyPart bodyPart)
     {
         if (currentHealth <= 0) return;
-        currentHealth -= damage;
+
+        if (bodyPart.GetBodyPart() == EnemyBody.Head)
+        {
+            currentHealth = 0;
+        }
+        else currentHealth -= damage;
+        
+        
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
+        
         healthBar.value = currentHealth;
+        
         if(!canvas.isActiveAndEnabled) canvas.enabled = true;
         if (currentHealth <= 0) Die();
     }
@@ -95,8 +104,9 @@ public class Soldier : Enemy, IDestroyable
 
     public override void InShootingPlace()
     {
+        navMesh.enabled = false;
         animator.SetBool("IsStopping", true);
-        //StartShootingRoutine();
+        StartShootingRoutine();
     }
 
     private void StartShootingRoutine()
@@ -142,8 +152,5 @@ public class Soldier : Enemy, IDestroyable
         return pos;
     }
 
-    GameObject IDestroyable.gameObject()
-    {
-        return gameObject;
-    }
 }
+public enum EnemyBody { Head, Other};
