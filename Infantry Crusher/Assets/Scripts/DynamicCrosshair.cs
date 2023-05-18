@@ -10,6 +10,10 @@ public class DynamicCrosshair : MonoBehaviour
     [SerializeField] private float minSize;
     [SerializeField] private float maxSize;
     [SerializeField] private float toDefaultDelay;
+    [SerializeField] private List<Image> hiteffect;
+    Color32 maxOpacity = new Color32(221,0,0,255);
+    Color32 minOpacity = new Color32(221,0,0,0);
+    Color32 currentOpacity;
     float currentSize;
 
     private void Awake()
@@ -21,37 +25,53 @@ public class DynamicCrosshair : MonoBehaviour
         
       
     }
+
+    public void SetHit()
+    {
+        for (int i = 0; i < hiteffect.Count; i++)
+        {
+            hiteffect[i].color = maxOpacity;
+        }
+        currentOpacity = maxOpacity;
+    }
     public void SetCrosshairSize()
     {
        
         borderTransform.sizeDelta = new Vector2(maxSize, maxSize);
         currentSize = maxSize;
        
-        StartToDefaultSizeRoutine();
+        StartToDefaultParametersRoutine();
     }
-    private void StartToDefaultSizeRoutine()
+    private void StartToDefaultParametersRoutine()
     {
-        if (ToDefaultSizeRoutineR != null) StopCoroutine(ToDefaultSizeRoutineR);
-        ToDefaultSizeRoutineR = StartCoroutine(ToDefaultSizeRoutine());
+        if (ToDefaultParametersRoutineR != null) StopCoroutine(ToDefaultParametersRoutineR);
+        ToDefaultParametersRoutineR = StartCoroutine(ToDefaultParametersRoutine());
     }
 
-    private void StopToDefaultSizeRoutine()
+    private void StopToDefaultParametersRoutine()
     {
-        if (ToDefaultSizeRoutineR != null) StopCoroutine(ToDefaultSizeRoutineR);
+        if (ToDefaultParametersRoutineR != null) StopCoroutine(ToDefaultParametersRoutineR);
     }
 
-    Coroutine ToDefaultSizeRoutineR;
-    private IEnumerator ToDefaultSizeRoutine()
+    Coroutine ToDefaultParametersRoutineR;
+    private IEnumerator ToDefaultParametersRoutine()
     {
         float t = 0;
+        float g = 0;
         float startTime = Time.fixedTime;
 
-        while (t<1)
+        while (t<1 || g<1)
         {
             t = (Time.fixedTime - startTime) / toDefaultDelay;
             currentSize = Mathf.Lerp(currentSize, minSize, t);
             borderTransform.sizeDelta = new Vector2(currentSize,currentSize);
-            
+
+            g = (Time.fixedTime - startTime) / 1;
+            currentOpacity = Color32.LerpUnclamped(currentOpacity, minOpacity, g);
+            for (int i = 0; i < hiteffect.Count; i++)
+            {
+                hiteffect[i].color = currentOpacity;
+            }
             yield return new WaitForEndOfFrame();
         }
     }

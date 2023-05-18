@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BasicBullet : Bullet
 {
-    public override void BulletInit(float _damage, Vector3 _direction, bool _isExplosive)
+    public override void BulletInit(float _damage, float _speed, Vector3 _direction, bool _isExplosive)
     {
-        base.BulletInit(_damage, _direction, _isExplosive);
+        base.BulletInit(_damage, _speed, _direction, _isExplosive);
         FlyingProcess();
         StartCoroutine(LifeTImeRoutine());
     }
     public override void FlyingProcess()
     {
-        rb.velocity = transform.forward * 100f;
+        rb.velocity = transform.forward * speed; ;
     }
 
     private IEnumerator LifeTImeRoutine()
@@ -26,6 +26,7 @@ public class BasicBullet : Bullet
         if (collision.transform.TryGetComponent(out IDestroyable destroyable))
         {
             destroyable.Damaged(damage);
+            DynamicCrosshair.instance.SetHit();
         }
         gameObject.SetActive(false);
     }

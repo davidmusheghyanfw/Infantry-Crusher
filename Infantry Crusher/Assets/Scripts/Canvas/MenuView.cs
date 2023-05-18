@@ -24,6 +24,6 @@ public class MenuView : MonoBehaviour
     public void OnLevelStart()
     {
         SetActive(false);
-        GameManager.instance.LevelStart();
+        GameManager.instance.PrepareLevel();
     }
 }

@@ -7,12 +7,14 @@ public class Bullet : MonoBehaviour
     protected float damage;
     protected bool isExplosive;
     protected Vector3 direction;
+    protected float speed;
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected TrailRenderer trailRenderer;
     public TrailRenderer TrailRenderer { get { return trailRenderer; } }
 
-    public virtual void BulletInit(float _damage, Vector3 _direction, bool _isExplosive)
+    public virtual void BulletInit(float _damage, float _speed, Vector3 _direction, bool _isExplosive)
     {
+        speed = _speed;
         damage = _damage;
         direction = _direction;
         isExplosive = _isExplosive;

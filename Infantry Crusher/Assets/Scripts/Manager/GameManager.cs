@@ -37,12 +37,22 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void PrepareLevel()
+    {
+        this.Timer(1f, () => {
+            CharacterController.instance.RunToPos();
+        });
+    }
     public void LevelStart()
     {
-        EnemyManager.instance.InitEnemyManager();
-        GameView.instance.SetActive(true);
-        GameView.instance.InitLevelUI();
-        isPlayerInteractble = true;
+        this.Timer(1f, () =>
+        {
+            EnemyManager.instance.InitEnemyManager();
+            GameView.instance.SetActive(true);
+            GameView.instance.InitLevelUI();
+            isPlayerInteractble = true;
+        });
+        
     }
     public void GameStart()
     {
