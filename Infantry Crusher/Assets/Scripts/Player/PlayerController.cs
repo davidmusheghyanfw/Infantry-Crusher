@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IDestroyable
 {
     public static PlayerController instance;
+    [SerializeField] private List<Gun> gunList = new List<Gun>();
+
     [SerializeField] private Gun activeGun;
 
     [SerializeField] private float rotationControll;
@@ -36,9 +38,17 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     public void InitPlayer()
     {
-
+        activeGun = gunList[0];
+        CameraController.instance.SwitchCamera(CameraState.Player);
+        CameraController.instance.SetFollowTarget(CameraState.Player, activeGun.transform);
+        CameraController.instance.SetAimTarget(CameraState.Player, activeGun.transform);
     }
 
+    public void ToNextGun(int index)
+    {
+        activeGun = gunList[index];
+        CharacterController.instance.GetNextPoin(activeGun.transform);
+    }
     void OnTouchDown(Vector3 startPos)
     {
         if(GameManager.instance.IsPlayerInteractble)activeGun.StartVisual();
@@ -63,7 +73,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
             if (overallRot.y > horizontalLimit.y) overallRot.y = prevRot.y;
 
             transform.rotation = Quaternion.Euler(overallRot);
-            CameraController.instance.UpdateCameraRotation(transform.rotation);
+            //CameraController.instance.UpdateCameraRotation(transform.rotation);
             prevRot = overallRot;
             activeGun.Shoot();
         }

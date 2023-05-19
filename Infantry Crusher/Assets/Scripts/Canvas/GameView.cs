@@ -36,7 +36,7 @@ public class GameView : MonoBehaviour
         currentLevelTxt.text = DataManager.instance.GetLevelNumber().ToString();
         nextLevelTxt.text = (DataManager.instance.GetLevelNumber()+1).ToString();
         progressBar.minValue = progressBar.value = 0;
-        progressBar.maxValue = EnemyManager.instance.EnemyCount;
+        progressBar.maxValue = LevelManager.instance.EnemyCount;
     }
     public void IncreaseProgressBar()
     {

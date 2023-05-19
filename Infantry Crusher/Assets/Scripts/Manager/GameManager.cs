@@ -28,9 +28,9 @@ public class GameManager : MonoBehaviour
         GameView.instance.InitGameView();
         LevelEndView.instance.InitLeveEndView();
         DebugView.instance.InitDebug();
-        InLevel();
+        InGame();
     }
-    public void InLevel()
+    public void InGame()
     {
         isPlayerInteractble = false;
         MenuView.instance.SetActive(true);
@@ -39,20 +39,33 @@ public class GameManager : MonoBehaviour
 
     public void PrepareLevel()
     {
+        LevelManager.instance.InitLevelManager();
+        CharacterController.instance.InitCharacterController();
+        GameView.instance.InitLevelUI();
+        GameView.instance.SetActive(false);
         this.Timer(1f, () => {
             CharacterController.instance.RunToPos();
         });
     }
-    public void LevelStart()
+    public void StageStart()
     {
+        PlayerController.instance.InitPlayer();
         this.Timer(1f, () =>
         {
-            EnemyManager.instance.InitEnemyManager();
+            
+            EnemyManager.instance.StartEnemySpawnRoutine();
             GameView.instance.SetActive(true);
-            GameView.instance.InitLevelUI();
+           
             isPlayerInteractble = true;
         });
         
+    }
+
+    public void ToNextStage()
+    {
+        CharacterController.instance.RunToPos(); 
+        
+
     }
     public void GameStart()
     {
@@ -62,7 +75,7 @@ public class GameManager : MonoBehaviour
     public void LevelWin()
     {
         DataManager.instance.IncreaseLevelNumber();
-        InLevel();
+        InGame();
     }
 
     public void LeveLoose()

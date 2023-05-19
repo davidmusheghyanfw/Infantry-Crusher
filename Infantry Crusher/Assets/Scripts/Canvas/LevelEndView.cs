@@ -24,7 +24,7 @@ public class LevelEndView : MonoBehaviour
     public void ActiveLevelWin()
     {
         levelWin.SetActive(true);
-        lvlWinKillsTxt.text = "KILLS:" + EnemyManager.instance.EnemyCount;
+        lvlWinKillsTxt.text = "KILLS:" + LevelManager.instance.EnemyCount;
     }
     public void ActiveLevelLoose()
     {

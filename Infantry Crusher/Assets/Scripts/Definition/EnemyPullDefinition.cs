@@ -6,10 +6,15 @@ using UnityEngine;
 public class EnemyPullDefinition : ScriptableObject
 {
 
-    public List<WavePull> wavePulls = new List<WavePull>();
+    public List<StagePull> stagePulls = new List<StagePull>();
    
 }
 
+[System.Serializable]
+public struct StagePull
+{
+    public List<WavePull> wavePulls;
+}
 [System.Serializable]
 public struct WavePull
 {

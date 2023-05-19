@@ -126,4 +126,4 @@ public class CameraController : MonoBehaviour
 
     }
 }
-public enum CameraState { Character, Player };
+public enum CameraState { Start,Follow,Player,End};

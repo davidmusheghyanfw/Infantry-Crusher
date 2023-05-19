@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
-    [SerializeField] EnemyPullDefinition pull;
+    
     [SerializeField] List<EnemyData> allEnemies;
     [SerializeField] private Vector3 randomSpawnPos;
     [SerializeField] List<Transform> spawnPos;
@@ -14,8 +14,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] Transform playerPos;
     [SerializeField] private int nextWaveTime;
     [SerializeField] List<Enemy> spawnedEnemies;
-    private int enemyCount;
-    public int EnemyCount { get { return enemyCount; } }
+    private StagePull stagePull;
+    
+    
 
     private Vector3 waveSpawnPos;
     private void Awake()
@@ -28,12 +29,20 @@ public class EnemyManager : MonoBehaviour
     }
     public void InitEnemyManager()
     {
-        CalculateEnemyCountInLevel();
-        StartEnemySpawnRoutine();
+      
     }
 
+    public void InitEnemySpawnPosInStage(int stage)
+    {
+        
+    }
 
-    private void StartEnemySpawnRoutine()
+    public void SetEnemyPull(StagePull _stagePull)
+    {
+        stagePull = _stagePull;
+    }
+
+    public void StartEnemySpawnRoutine()
     {
         if (EnemySpawnRoutineC != null) StopCoroutine(EnemySpawnRoutineC);
         EnemySpawnRoutineC = StartCoroutine(EnemySpawnRoutine());
@@ -48,9 +57,9 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator EnemySpawnRoutine()
     {
         int i = 0;
-        while(i< pull.wavePulls.Count)
+        while(i< stagePull.wavePulls.Count)
         {
-            WavePull wavePull = pull.wavePulls[i];
+            WavePull wavePull = stagePull.wavePulls[i];
             int j = 0;
             while(j< wavePull.inWaves.Count)
             {
@@ -100,16 +109,5 @@ public class EnemyManager : MonoBehaviour
         return spawnPos[UnityEngine.Random.Range(0, spawnPos.Count)];
     }
 
-    private void CalculateEnemyCountInLevel()
-    {
-        enemyCount = 0;
-        for (int i = 0; i < pull.wavePulls.Count; i++)
-        {
-            for (int j = 0; j < pull.wavePulls[i].inWaves.Count; j++)
-            {
-                enemyCount += pull.wavePulls[i].inWaves[j].Count;
-            }
-        }
-        
-    }
+   
 }
