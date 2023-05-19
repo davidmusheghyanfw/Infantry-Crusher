@@ -12,19 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c77db9092469a649b8e41c851a2d874, type: 3}
   m_Name: EnemyPull
   m_EditorClassIdentifier: 
-  wavePulls:
-  - inWaves:
-    - Count: 10
-      enemyType: 1
-      enemyDifficult: 0
-  - inWaves:
-    - Count: 3
-      enemyType: 1
-      enemyDifficult: 0
-    - Count: 1
-      enemyType: 1
-      enemyDifficult: 1
-  - inWaves:
-    - Count: 4
-      enemyType: 1
-      enemyDifficult: 1
+  stagePulls:
+  - wavePulls:
+    - inWaves:
+      - Count: 10
+        enemyType: 1
+        enemyDifficult: 0
+    - inWaves:
+      - Count: 2
+        enemyType: 1
+        enemyDifficult: 0
+      - Count: 1
+        enemyType: 1
+        enemyDifficult: 1
+      - Count: 3
+        enemyType: 1
+        enemyDifficult: 0
+      - Count: 3
+        enemyType: 1
+        enemyDifficult: 0
+      - Count: 2
+        enemyType: 1
+        enemyDifficult: 1
+    - inWaves:
+      - Count: 10
+        enemyType: 1
+        enemyDifficult: 0
+  - wavePulls:
+    - inWaves:
+      - Count: 4
+        enemyType: 1
+        enemyDifficult: 0
+      - Count: 2
+        enemyType: 1
+        enemyDifficult: 1
+    - inWaves:
+      - Count: 10
+        enemyType: 1
+        enemyDifficult: 0
+    - inWaves:
+      - Count: 5
+        enemyType: 1
+        enemyDifficult: 0
+      - Count: 1
+        enemyType: 1
+        enemyDifficult: 2
