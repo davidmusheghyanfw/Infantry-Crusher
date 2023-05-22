@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     protected TrailRenderer BulletTrail;
     [SerializeField] 
     protected BulletController bulletController;
+    public BulletController BulletControllerInstance { get { return bulletController; } set { bulletController = value; } }
     [SerializeField]
     protected float BulletSpeed = 100;
     [SerializeField]
@@ -42,7 +43,7 @@ public class Gun : MonoBehaviour
     {
 
     }
-      public virtual void StopVisual()
+    public virtual void StopVisual()
     {
 
     }

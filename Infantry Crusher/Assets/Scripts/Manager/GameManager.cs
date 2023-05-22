@@ -43,16 +43,13 @@ public class GameManager : MonoBehaviour
         CharacterController.instance.InitCharacterController();
         GameView.instance.InitLevelUI();
         GameView.instance.SetActive(false);
-        this.Timer(1f, () => {
-            CharacterController.instance.RunToPos();
-        });
+        
     }
     public void StageStart()
     {
         PlayerController.instance.InitPlayer();
         this.Timer(1f, () =>
         {
-            
             EnemyManager.instance.StartEnemySpawnRoutine();
             GameView.instance.SetActive(true);
            
@@ -61,19 +58,20 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void ToNextStage()
-    {
-        CharacterController.instance.RunToPos(); 
-        
-
-    }
     public void GameStart()
     {
       
     }
 
+    public void ClearLevel()
+    {
+        PlayerController.instance.ClearAllGuns();
+        EnemyManager.instance.ClearAllEnemies();
+    }
+
     public void LevelWin()
     {
+        ClearLevel();
         DataManager.instance.IncreaseLevelNumber();
         InGame();
     }

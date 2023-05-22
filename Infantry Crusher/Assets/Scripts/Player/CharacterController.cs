@@ -27,13 +27,16 @@ public class CharacterController : MonoBehaviour
     }
     public void RunToPos()
     {
-        
+
         //CameraController.instance.SetAimTarget(CameraState.Follow,transform);
         //Vector3 targetPostition = new Vector3(transform.position.x,
         //                              player.position.y,
         //                               transform.position.z);
+        GameManager.instance.IsPlayerInteractble = false;
+        CameraController.instance.SwitchCamera(CameraState.Follow);
         transform.LookAt(player);
         animator.Play("Fast Run");
+             
         StartCoroutine(StopingRoutine());
     }
 

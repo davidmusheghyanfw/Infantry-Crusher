@@ -20,5 +20,7 @@ public class TabGroupManager : MonoBehaviour
     public void InitTabGroupManager()
     {
         mapToggle.SetActive();
+
+        //mapToggle.ChangeState(true);
     }
 }

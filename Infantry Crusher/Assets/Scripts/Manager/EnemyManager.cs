@@ -41,6 +41,10 @@ public class EnemyManager : MonoBehaviour
     {
         stagePull = _stagePull;
     }
+    public void SetEnemySpawnPosInCurrentStage(List<Transform> enemyPoses)
+    {
+        spawnPos = enemyPoses;
+    }
 
     public void StartEnemySpawnRoutine()
     {
@@ -56,33 +60,46 @@ public class EnemyManager : MonoBehaviour
     Coroutine EnemySpawnRoutineC;
     private IEnumerator EnemySpawnRoutine()
     {
-        int i = 0;
-        while(i< stagePull.wavePulls.Count)
+        for (int i = 0; i < stagePull.wavePulls.Count; i++)
         {
-            WavePull wavePull = stagePull.wavePulls[i];
-            int j = 0;
-            while(j< wavePull.inWaves.Count)
+            for (int j = 0; j < stagePull.wavePulls[i].inWaves.Count; j++)
             {
                 waveSpawnPos = GetSpawnPos().position;
-                InWave inWave = wavePull.inWaves[j];
-                int k = 0;
-                while(k<inWave.Count)
+                for (int k = 0; k < stagePull.wavePulls[i].inWaves[j].Count; k++)
                 {
-                    InstantiateEnemy(inWave);
-                    k++;
+                    InstantiateEnemy(stagePull.wavePulls[i].inWaves[j]);
                     yield return new WaitForSecondsRealtime(0.2f);
                 }
-                j++;
             }
             yield return new WaitForSeconds(nextWaveTime);
-            i++;
         }
+        //int i = 0;
+        //while(i < stagePull.wavePulls.Count)
+        //{
+        //    int j = 0;
+        //    while(j < stagePull.wavePulls[i].inWaves.Count)
+        //    {
+        //        waveSpawnPos = GetSpawnPos().position;
+
+        //        int k = 0;
+        //        while(k< stagePull.wavePulls[i].inWaves[j].Count)
+        //        {
+        //            InstantiateEnemy(stagePull.wavePulls[i].inWaves[j]);
+
+        //            yield return new WaitForSecondsRealtime(0.2f);
+        //            k++;
+        //        }
+        //        j++;
+        //    }
+        //    yield return new WaitForSeconds(nextWaveTime);
+        //    i++;
+
+        //}
         StopEnemySpawnRoutine();
     }
 
     private void InstantiateEnemy(InWave inWave)
     {
-
         for (int i = 0; i < allEnemies.Count; i++)
         {
             if (allEnemies[i].enemyType == inWave.enemyType && allEnemies[i].enemyDifficult == inWave.enemyDifficult)
@@ -109,5 +126,16 @@ public class EnemyManager : MonoBehaviour
         return spawnPos[UnityEngine.Random.Range(0, spawnPos.Count)];
     }
 
-   
+    public void RemoveFromList(Enemy enemy)
+    {
+        spawnedEnemies.Remove(enemy);
+    }
+    public void ClearAllEnemies()
+    {
+        for (int i = 0; i < spawnedEnemies.Count; i++)
+        {
+            Destroy(spawnedEnemies[0].gameObject);
+            spawnedEnemies.RemoveAt(0);
+        }
+    }
 }

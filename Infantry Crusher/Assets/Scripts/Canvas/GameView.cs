@@ -46,6 +46,11 @@ public class GameView : MonoBehaviour
             GameManager.instance.IsPlayerInteractble = false;
             LevelEndView.instance.ActiveLevelWin();
         }
+        else if(progressBar.value == LevelManager.instance.EnemyCountInStage)
+        {
+            GameManager.instance.IsPlayerInteractble = false;
+            LevelManager.instance.ToNextStage();
+        }
     }
     public void ChangeHealtBarValue()
     {

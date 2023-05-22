@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124682554175403286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.021814799, y: 0, z: 0, w: 0.999762}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 3491708893785396630}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.5, y: 0, z: 0}
 --- !u!114 &7305997850592169346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,13 +55,11 @@ MonoBehaviour:
     type: 3}
   BulletTrail: {fileID: 328621789431213768, guid: 43559d27d223bf340b413fde1315c256,
     type: 3}
-  ShootDelay: 0.2
-  Mask:
-    serializedVersion: 2
-    m_Bits: 64
-  BulletSpeed: 100
+  bulletController: {fileID: 0}
+  BulletSpeed: 200
   BulletDamage: 50
-  visual: {fileID: 0}
+  ShootDelay: 0.15
+  visual: {fileID: 8667049554963170576}
 --- !u!1 &8494968098121126962
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,14 +83,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8494968098121126962}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.019197362, y: 0, z: 0, w: 0.9998157}
   m_LocalPosition: {x: 0, y: 0.13, z: 2.467}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1655090959342886229}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.2, y: 0, z: 0}
 --- !u!1001 &4035141429697966717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingObject: {fileID: 3279603366086225874}
-  maxSpeed: 100
+  maxSpeed: 50
   delayTime: 4
 --- !u!1001 &8494968098225986238
 PrefabInstance:

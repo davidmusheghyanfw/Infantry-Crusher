@@ -23,9 +23,9 @@ public class EnemySolderBullet : Bullet
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.GetComponent<PlayerController>() && collision.transform.TryGetComponent(out IDestroyable destroyable))
+        if (collision.transform.CompareTag("Player"))
         {
-            destroyable.Damaged(damage);
+            PlayerController.instance.Damaged(damage);
         }
         gameObject.SetActive(false);
     }

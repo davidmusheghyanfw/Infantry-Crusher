@@ -32,7 +32,7 @@ public class Soldier : Enemy
         animator.Play("Die");
         PointerManager.Instance.RemoveFromList(this);
         GameView.instance.IncreaseProgressBar();
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 3);
     }
 
     private IEnumerator DieMiageAnime()

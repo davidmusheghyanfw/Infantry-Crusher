@@ -6,10 +6,12 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     [SerializeField] EnemyPullDefinition enemyPull;
-    [SerializeField] private int maxStageCout = 2;
-    private int currentStage = 1;
+    [SerializeField] LevelPrefab levelPrefab;
+    private int currentStage = 0;
     private int enemyCount;
+    private int enemyCountInStage;
     public int EnemyCount { get { return enemyCount; } }
+    public int EnemyCountInStage { get { return enemyCountInStage; } }
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class LevelManager : MonoBehaviour
     public void InitLevelManager()
     {
         CalculateEnemyCountInLevel();
+        InitPlayerGuns();
         EnemyManager.instance.SetEnemyPull(enemyPull.stagePulls[currentStage]);
         InitStage();
     }
@@ -29,9 +32,18 @@ public class LevelManager : MonoBehaviour
         InitStage();
     }
 
+    public void InitPlayerGuns()
+    {
+        for (int i = 0; i < levelPrefab.GetLevelSegmentCount(); i++)
+        {
+            PlayerController.instance.AddNewGun(levelPrefab.levelSegments[i].playerPos);
+        }
+    }
     public void InitStage()
     {
+        CalculateEnemyInCurrentStage();
         PlayerController.instance.ToNextGun(currentStage);
+        EnemyManager.instance.SetEnemySpawnPosInCurrentStage(levelPrefab.levelSegments[currentStage].enemyPosesInSegment);
     }
 
 
@@ -48,7 +60,20 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
-      
+    }
 
+    private void CalculateEnemyInCurrentStage()
+    {
+        enemyCountInStage = 0;
+        StagePull stage = enemyPull.stagePulls[currentStage];
+
+        for (int i = 0; i < stage.wavePulls.Count; i++)
+        {
+            for (int j = 0; j < stage.wavePulls[i].inWaves.Count; j++)
+            {
+                enemyCountInStage += stage.wavePulls[i].inWaves[j].Count;
+            }
+        }
+      
     }
 }

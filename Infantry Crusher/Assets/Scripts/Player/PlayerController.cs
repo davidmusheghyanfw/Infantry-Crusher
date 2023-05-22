@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDestroyable
+public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    [SerializeField] private List<Gun> gunList = new List<Gun>();
 
+    [SerializeField] private List<Gun> gunList = new List<Gun>();
+    [SerializeField] private Gun selectedGun;
     [SerializeField] private Gun activeGun;
 
     [SerializeField] private float rotationControll;
@@ -38,16 +39,26 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     public void InitPlayer()
     {
-        activeGun = gunList[0];
         CameraController.instance.SwitchCamera(CameraState.Player);
         CameraController.instance.SetFollowTarget(CameraState.Player, activeGun.transform);
         CameraController.instance.SetAimTarget(CameraState.Player, activeGun.transform);
+        //transform.position = new Vector3(activeGun.transform.position.x, transform.position.y, activeGun.transform.position.z);
+        CameraController.instance.SwitchCamera(CameraState.Player);
     }
-
+    public void AddNewGun(Transform gunPos)
+    {
+        gunList.Add(Instantiate(selectedGun, gunPos.position, Quaternion.identity, transform));
+    }
     public void ToNextGun(int index)
     {
         activeGun = gunList[index];
+        activeGun.BulletControllerInstance = BulletController.instance;
+        
         CharacterController.instance.GetNextPoin(activeGun.transform);
+        this.Timer(1f, () => { 
+        CharacterController.instance.RunToPos();
+        
+        });
     }
     void OnTouchDown(Vector3 startPos)
     {
@@ -72,7 +83,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
             if (overallRot.y < horizontalLimit.x) overallRot.y = prevRot.y;
             if (overallRot.y > horizontalLimit.y) overallRot.y = prevRot.y;
 
-            transform.rotation = Quaternion.Euler(overallRot);
+            activeGun.transform.rotation = Quaternion.Euler(overallRot);
             //CameraController.instance.UpdateCameraRotation(transform.rotation);
             prevRot = overallRot;
             activeGun.Shoot();
@@ -81,7 +92,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     void OnTouchUp(Vector3 lastPos)
     {
-        activeGun.StopVisual();
+        if(activeGun is not null) activeGun.StopVisual();
     }
 
     public void Damaged(float damage)
@@ -90,8 +101,12 @@ public class PlayerController : MonoBehaviour, IDestroyable
         GameView.instance.ChangeHealtBarValue();
     }
 
-    GameObject IDestroyable.gameObject()
+    public void ClearAllGuns()
     {
-        return gameObject;
+        for (int i = 0; i < gunList.Count; i++)
+        {
+            Destroy(gunList[0].gameObject);
+            gunList.RemoveAt(0);
+        }
     }
 }

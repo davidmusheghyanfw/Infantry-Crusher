@@ -20,6 +20,7 @@ public class MiniGun : Gun
     {
         DynamicCrosshair.instance.SetShootingDelay(ShootDelay);
     }
+
     public override Vector3 GetulletDirection()
     {
         Vector3 direction = Camera.main.transform.forward;
