@@ -105,8 +105,8 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < gunList.Count; i++)
         {
-            Destroy(gunList[0].gameObject);
-            gunList.RemoveAt(0);
+            Destroy(gunList[i].gameObject);
         }
+        gunList.Clear();
     }
 }

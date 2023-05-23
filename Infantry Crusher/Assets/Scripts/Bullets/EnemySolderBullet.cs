@@ -27,6 +27,7 @@ public class EnemySolderBullet : Bullet
         {
             PlayerController.instance.Damaged(damage);
         }
-        gameObject.SetActive(false);
+        Destroy(gameObject);
+
     }
 }

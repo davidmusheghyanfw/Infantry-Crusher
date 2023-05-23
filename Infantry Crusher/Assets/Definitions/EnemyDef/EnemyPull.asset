@@ -15,7 +15,7 @@ MonoBehaviour:
   stagePulls:
   - wavePulls:
     - inWaves:
-      - Count: 10
+      - Count: 5
         enemyType: 1
         enemyDifficult: 0
     - inWaves:
@@ -35,7 +35,7 @@ MonoBehaviour:
         enemyType: 1
         enemyDifficult: 1
     - inWaves:
-      - Count: 10
+      - Count: 5
         enemyType: 1
         enemyDifficult: 0
   - wavePulls:
@@ -47,7 +47,7 @@ MonoBehaviour:
         enemyType: 1
         enemyDifficult: 1
     - inWaves:
-      - Count: 10
+      - Count: 5
         enemyType: 1
         enemyDifficult: 0
     - inWaves:

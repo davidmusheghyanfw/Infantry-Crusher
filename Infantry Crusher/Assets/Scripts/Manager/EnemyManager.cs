@@ -29,12 +29,13 @@ public class EnemyManager : MonoBehaviour
     }
     public void InitEnemyManager()
     {
-      
+      ClearAllEnemies();
     }
 
-    public void InitEnemySpawnPosInStage(int stage)
+    
+    public void SetPlayerPos(Transform pos)
     {
-        
+        playerPos = pos;
     }
 
     public void SetEnemyPull(StagePull _stagePull)
@@ -52,7 +53,7 @@ public class EnemyManager : MonoBehaviour
         EnemySpawnRoutineC = StartCoroutine(EnemySpawnRoutine());
     }
 
-    private void StopEnemySpawnRoutine()
+    public void StopEnemySpawnRoutine()
     {
         if (EnemySpawnRoutineC != null) StopCoroutine(EnemySpawnRoutineC);
     }
@@ -134,8 +135,9 @@ public class EnemyManager : MonoBehaviour
     {
         for (int i = 0; i < spawnedEnemies.Count; i++)
         {
-            Destroy(spawnedEnemies[0].gameObject);
-            spawnedEnemies.RemoveAt(0);
+            PointerManager.Instance.RemoveFromList(spawnedEnemies[i]);
+            Destroy(spawnedEnemies[i].gameObject);
         }
+        spawnedEnemies.Clear();
     }
 }

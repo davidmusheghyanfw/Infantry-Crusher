@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public void PrepareLevel()
     {
         LevelManager.instance.InitLevelManager();
+        EnemyManager.instance.InitEnemyManager();
         CharacterController.instance.InitCharacterController();
         GameView.instance.InitLevelUI();
         GameView.instance.SetActive(false);
@@ -65,7 +66,11 @@ public class GameManager : MonoBehaviour
 
     public void ClearLevel()
     {
+
         PlayerController.instance.ClearAllGuns();
+        LevelManager.instance.ClearLevel();
+        Destroy(CharacterController.instance.gameObject);
+        EnemyManager.instance.StopEnemySpawnRoutine();
         EnemyManager.instance.ClearAllEnemies();
     }
 
@@ -93,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     private void Restart()
     {
+        ClearLevel();
         GameInit();
     }
 

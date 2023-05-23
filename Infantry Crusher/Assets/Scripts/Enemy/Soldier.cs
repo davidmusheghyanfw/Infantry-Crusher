@@ -108,20 +108,7 @@ public class Soldier : Enemy
                 navMesh.nextPosition = transform.position + 0.9f * worldDeltaPosition;
                 navMesh.SetDestination(player.position);
             }
-            //if (index < rout.Count)
-            //{
-            //    if (Vector3.Distance(transform.position, rout[index]) < 4f)
-            //    {
-            //        index++;
-            //        if (index < rout.Count) transform.LookAt(rout[index]);
-            //        else transform.LookAt(Player);
-            //    }
-            //}
-            //else if (Vector3.Distance(transform.position, Player.position) < 5f)
-            //{
-            //    animator.SetBool("IsStopping", true);
-            //    StopMoveToPointRoutine();
-            //}
+         
             canvas.transform.LookAt(canvas.transform.position + Camera.main.transform.rotation * -Vector3.back,
             Camera.main.transform.rotation * -Vector3.down);
             yield return new WaitForEndOfFrame();

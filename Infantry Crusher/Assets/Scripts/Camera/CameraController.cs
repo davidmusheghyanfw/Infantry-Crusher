@@ -21,12 +21,20 @@ public class CameraController : MonoBehaviour
     }
 
     [System.Serializable]
-    class CameraProperties
+    public class CameraProperties
     {
         public CameraState state;
         public CinemachineVirtualCamera camera;
+      
     }
-
+    public CameraProperties GetCameraProperties(CameraState state)
+    {
+        for (int i = 0; i < cameraStates.Count; i++)
+        {
+            if (cameraStates[i].state == state) return cameraStates[i];
+        }
+        return null;
+    }
     public void UpdateCameraRotation(Quaternion rotation)
     {
         main.transform.rotation = rotation;
