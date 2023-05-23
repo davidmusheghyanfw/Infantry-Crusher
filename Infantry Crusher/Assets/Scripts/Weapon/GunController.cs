@@ -11,11 +11,7 @@ public class Gun : MonoBehaviour
     protected ParticleSystem ShootingSystem;
     [SerializeField]
     protected Transform BulletSpawnPoint;
-    [SerializeField]
-    protected ParticleSystem ImpactParticleSystem;
-    [SerializeField]
-    protected TrailRenderer BulletTrail;
-    [SerializeField] 
+    
     protected BulletController bulletController;
     public BulletController BulletControllerInstance { get { return bulletController; } set { bulletController = value; } }
     [SerializeField]
