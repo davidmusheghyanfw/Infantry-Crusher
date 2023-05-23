@@ -95,8 +95,14 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    public void FastWin()
+    {
+        EnemyManager.instance.StopEnemySpawnRoutine();
+        EnemyManager.instance.ClearAllEnemies();
+        GameView.instance.FastWin();
+    }
 
-    private void Restart()
+    public void Restart()
     {
         ClearLevel();
         GameInit();
@@ -115,7 +121,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("w"))
         {
-           
+            FastWin();
         }
     }
 #endif

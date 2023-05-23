@@ -57,6 +57,11 @@ public class GameView : MonoBehaviour
         healthBar.value = PlayerController.instance.Health;
     }
 
+    public void FastWin()
+    {
+        GameManager.instance.IsPlayerInteractble = false;
+        LevelEndView.instance.ActiveLevelWin();
+    }
     public void SetActive(bool value)
     {
         gameObject.SetActive(value);
