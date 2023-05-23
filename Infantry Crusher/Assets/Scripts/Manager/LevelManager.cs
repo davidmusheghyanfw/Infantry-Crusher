@@ -5,7 +5,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-    [SerializeField] LevelDefinition levelDefinition;
+    [SerializeField] List<LevelDefinition> levelDefinitions;
+    LevelDefinition currentLevelDefinition;
     private int currentStage = 0;
     private int enemyCount;
     private int enemyCountInStage;
@@ -21,11 +22,17 @@ public class LevelManager : MonoBehaviour
 
     public void InitLevelManager()
     {
-        level = Instantiate(levelDefinition.level.gameObject, Vector3.zero, Quaternion.identity);
+        SetCurrentLevel();
+        level = Instantiate(currentLevelDefinition.level.gameObject, Vector3.zero, Quaternion.identity);
         CalculateEnemyCountInLevel();
         InitPlayerGuns();
         
         InitStage();
+    }
+    public void SetCurrentLevel()
+    {
+        int index = DataManager.instance.GetLevelNumber() % levelDefinitions.Count;
+        currentLevelDefinition = levelDefinitions[index];
     }
 
     public void ToNextStage()
@@ -36,30 +43,30 @@ public class LevelManager : MonoBehaviour
 
     public void InitPlayerGuns()
     {
-        for (int i = 0; i < levelDefinition.level.GetLevelSegmentCount(); i++)
+        for (int i = 0; i < currentLevelDefinition.level.GetLevelSegmentCount(); i++)
         {
-            PlayerController.instance.AddNewGun(levelDefinition.level.levelSegments[i].playerPos);
+            PlayerController.instance.AddNewGun(currentLevelDefinition.level.levelSegments[i].playerPos);
         }
     }
     public void InitStage()
     {
         CalculateEnemyInCurrentStage();
-        EnemyManager.instance.SetEnemyPull(levelDefinition.enemyPull.stagePulls[currentStage]);
+        EnemyManager.instance.SetEnemyPull(currentLevelDefinition.enemyPull.stagePulls[currentStage]);
         PlayerController.instance.ToNextGun(currentStage);
-        EnemyManager.instance.SetEnemySpawnPosInCurrentStage(levelDefinition.level.levelSegments[currentStage].enemyPosesInSegment);
+        EnemyManager.instance.SetEnemySpawnPosInCurrentStage(currentLevelDefinition.level.levelSegments[currentStage].enemyPosesInSegment);
     }
 
 
     private void CalculateEnemyCountInLevel()
     {
         enemyCount = 0;
-        for (int k = 0; k < levelDefinition.enemyPull.stagePulls.Count; k++)
+        for (int k = 0; k < currentLevelDefinition.enemyPull.stagePulls.Count; k++)
         {
-            for (int i = 0; i < levelDefinition.enemyPull.stagePulls[k].wavePulls.Count; i++)
+            for (int i = 0; i < currentLevelDefinition.enemyPull.stagePulls[k].wavePulls.Count; i++)
             {
-                for (int j = 0; j < levelDefinition.enemyPull.stagePulls[k].wavePulls[i].inWaves.Count; j++)
+                for (int j = 0; j < currentLevelDefinition.enemyPull.stagePulls[k].wavePulls[i].inWaves.Count; j++)
                 {
-                    enemyCount += levelDefinition.enemyPull.stagePulls[k].wavePulls[i].inWaves[j].Count;
+                    enemyCount += currentLevelDefinition.enemyPull.stagePulls[k].wavePulls[i].inWaves[j].Count;
                 }
             }
         }
@@ -69,7 +76,7 @@ public class LevelManager : MonoBehaviour
     private void CalculateEnemyInCurrentStage()
     {
         enemyCountInStage = 0;
-        StagePull stage = levelDefinition.enemyPull.stagePulls[currentStage];
+        StagePull stage = currentLevelDefinition.enemyPull.stagePulls[currentStage];
 
         for (int i = 0; i < stage.wavePulls.Count; i++)
         {
