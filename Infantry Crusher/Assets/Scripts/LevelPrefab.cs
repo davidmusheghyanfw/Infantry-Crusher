@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class LevelPrefab : MonoBehaviour
 {
-    public NavMeshSurface[] surfaces;
     public List<LevelSegment> levelSegments = new List<LevelSegment>();
    
     public GameObject GetLevel()
@@ -21,15 +20,6 @@ public class LevelPrefab : MonoBehaviour
     public LevelSegment GetLevelSegment(int index)
     {
         return levelSegments[index];
-    }
-
-    public void BakeLevel()
-    {
-        Debug.Log("s");
-        for (int i = 0; i < surfaces.Length; i++)
-        {
-            surfaces[i].BuildNavMesh();
-        }
     }
 }
 

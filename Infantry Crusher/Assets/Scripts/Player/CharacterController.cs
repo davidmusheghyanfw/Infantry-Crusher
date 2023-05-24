@@ -10,11 +10,19 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Transform startPos;
     [SerializeField] private CinemachineVirtualCamera camera;
+    [SerializeField] private CinemachinePath path;
+    private CameraController cameraController;
     private void Awake()
     {
         instance = this;
     }
 
+    private void Start()
+    {
+        cameraController = CameraController.instance;
+
+        
+    }
     public void InitCharacterController()
     {
         transform.position = startPos.position;
@@ -23,6 +31,11 @@ public class CharacterController : MonoBehaviour
         CameraController.instance.SwitchCamera(CameraState.Follow);
         CameraController.instance.SetFollowTarget(CameraState.Follow, transform);
         CameraController.instance.SetAimTarget(CameraState.Follow, transform);
+
+
+        CameraController.instance.SetAimTarget(CameraState.End, transform);
+        CameraController.instance.SetTrackedDollyCamera(CameraState.End);
+        CameraController.instance.SetTrackedDollyPath(CameraState.End, path);
     }
 
     public void GetNextPoin(Transform value)
@@ -56,5 +69,10 @@ public class CharacterController : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    public void VisualDieAnim()
+    {
+        animator.Play("Die");
     }
 }

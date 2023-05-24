@@ -8,7 +8,8 @@ public class LevelEndView : MonoBehaviour
     public static LevelEndView instance;
     [SerializeField] GameObject levelWin;
     [SerializeField] TMP_Text lvlWinKillsTxt;
-    [SerializeField] GameObject levelLoose;
+    [SerializeField] GameObject levelLose;
+    [SerializeField] TMP_Text lvlLooseKillsTxt;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class LevelEndView : MonoBehaviour
     public void InitLeveEndView()
     {
         levelWin.SetActive(false);
-        levelLoose.SetActive(false);
+        levelLose.SetActive(false);
     }
 
     public void ActiveLevelWin()
@@ -26,9 +27,11 @@ public class LevelEndView : MonoBehaviour
         levelWin.SetActive(true);
         lvlWinKillsTxt.text = "KILLS:" + LevelManager.instance.EnemyCount;
     }
+
     public void ActiveLevelLoose()
     {
-        levelLoose.SetActive(true);
+        levelLose.SetActive(true);
+        lvlLooseKillsTxt.text = "KILLS:" + GameView.instance.GetDeadEnemyCount();
     }
 
     public void OnLevelWin()
@@ -36,10 +39,10 @@ public class LevelEndView : MonoBehaviour
         GameManager.instance.LevelWin();
         levelWin.SetActive(false);
     }
-    public void OnLevelLoose()
+    public void OnLevelLose()
     {
-        GameManager.instance.LeveLoose();
-        levelLoose.SetActive(false);
+        GameManager.instance.LeveLose();
+        levelLose.SetActive(false);
     }
     
 }

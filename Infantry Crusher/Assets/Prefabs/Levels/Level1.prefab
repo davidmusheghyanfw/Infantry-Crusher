@@ -393,8 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0cbd2a438361b42adbd3d318bd2d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaces:
-  - {fileID: 6511449852105167231}
   levelSegments:
   - playerPos: {fileID: 6571472068365699163}
     enemyPosesInSegment:
@@ -1020,7 +1018,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: ffb024b09b439794c8f40a602ea4c536, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 028e7eb2399ca934cb14fd45adde5199, type: 2}
 --- !u!1 &7035136244466981313
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,6 +55,17 @@ public class GameView : MonoBehaviour
     public void ChangeHealtBarValue()
     {
         healthBar.value = PlayerController.instance.Health;
+        if(healthBar.value <= healthBar.minValue)
+        {
+            GameManager.instance.IsPlayerInteractble = false;
+            CameraController.instance.SwitchCamera(CameraState.End);
+
+            CameraController.instance.StartTrackedDollAnimRoutine();
+                CharacterController.instance.VisualDieAnim();
+            this.Timer(2f, () => {
+            LevelEndView.instance.ActiveLevelLoose();
+            });
+        }
     }
 
     public void FastWin()
@@ -65,5 +76,10 @@ public class GameView : MonoBehaviour
     public void SetActive(bool value)
     {
         gameObject.SetActive(value);
+    }
+
+    public int GetDeadEnemyCount()
+    {
+        return (int)progressBar.value;
     }
 }

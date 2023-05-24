@@ -81,20 +81,13 @@ public class GameManager : MonoBehaviour
         InGame();
     }
 
-    public void LeveLoose()
+    public void LeveLose()
     {
-        
-    }
-
-    private void Pause()
-    {
+        ClearLevel();
+        InGame();
 
     }
 
-    private void Resume()
-    {
-
-    }
     public void FastWin()
     {
         EnemyManager.instance.StopEnemySpawnRoutine();

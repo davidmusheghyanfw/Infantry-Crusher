@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2554273378678365194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7900171118229745184}
+  - component: {fileID: 6028612379230223818}
+  m_Layer: 7
+  m_Name: Tracked Dolly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7900171118229745184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554273378678365194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3219197493480529501}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6028612379230223818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554273378678365194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 1
+  m_Waypoints:
+  - position: {x: 2.5, y: 2.5, z: 2.5}
+    tangent: {x: -1.25, y: 0, z: 1.25}
+    roll: 0
+  - position: {x: -2.5, y: 2.5, z: 2.5}
+    tangent: {x: -1.25, y: 0, z: -1.25}
+    roll: 0
+  - position: {x: -2.5, y: 2.5, z: -2.5}
+    tangent: {x: 1.25, y: 0, z: -1.25}
+    roll: 0
+  - position: {x: 2.5, y: 2.5, z: -2.5}
+    tangent: {x: 1.25, y: 0, z: 1.25}
+    roll: 0
 --- !u!1 &3219197491530546476
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +348,7 @@ Transform:
   - {fileID: 3219197491530546479}
   - {fileID: 3219197492269373753}
   - {fileID: 3219197491751695554}
+  - {fileID: 7900171118229745184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,6 +367,7 @@ MonoBehaviour:
   animator: {fileID: 9063061840205835993}
   startPos: {fileID: 0}
   camera: {fileID: 3219197491751695565}
+  path: {fileID: 6028612379230223818}
 --- !u!195 &3219197493480529503
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -81,6 +81,7 @@ public class CameraController : MonoBehaviour
         if (!GetCamera(cameraState).GetCinemachineComponent<CinemachineTrackedDolly>()) return;
 
         activeTrackedDollyCamera = GetCamera(cameraState).GetCinemachineComponent<CinemachineTrackedDolly>();
+        activeTrackedDollyCamera.m_PathPosition = 0.891f;
     }
     public void SetUpdateMethod(CinemachineBrain.UpdateMethod updateMethod)
     {
@@ -111,7 +112,7 @@ public class CameraController : MonoBehaviour
     {
         float t = 0;
         float startTime = Time.fixedTime;
-
+        Debug.Log(activeTrackedDollyCamera,transform);
         while (t < 1)
         {
             t = (Time.fixedTime - startTime) / pathAnimSpeed;
