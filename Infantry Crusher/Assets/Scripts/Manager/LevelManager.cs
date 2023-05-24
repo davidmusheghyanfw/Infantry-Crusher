@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
     {
         SetCurrentLevel();
         level = Instantiate(currentLevelDefinition.level.gameObject, Vector3.zero, Quaternion.identity);
+        //currentLevelDefinition.level.BakeLevel();
         CalculateEnemyCountInLevel();
         InitPlayerGuns();
         
