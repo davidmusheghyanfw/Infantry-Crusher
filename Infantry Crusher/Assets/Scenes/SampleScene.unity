@@ -3405,7 +3405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 0}
-  m_PathPosition: 0.891
+  m_PathPosition: 0.3359999
   m_PositionUnits: 2
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -8206,7 +8206,7 @@ MonoBehaviour:
   rotationControll: 1
   verticalLimit: {x: -30, y: 15}
   horizontalLimit: {x: -60, y: 60}
-  health: 1000
+  health: 1
 --- !u!4 &1133295638
 Transform:
   m_ObjectHideFlags: 0
