@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         GameView.instance.ChangeHealtBarValue();
+        LevelManager.instance.CheckPlayeHealth();
     }
 
     public void ClearAllGuns()

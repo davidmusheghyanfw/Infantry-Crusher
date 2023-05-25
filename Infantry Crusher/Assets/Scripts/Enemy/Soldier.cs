@@ -30,13 +30,12 @@ public class Soldier : Enemy
         StopShootingRoutine();
       
         animator.Play("Die");
-        PointerManager.Instance.RemoveFromList(this);
-        GameView.instance.IncreaseProgressBar();
-        EnemyManager.instance.RemoveFromList(this);
+       
+        EnemyManager.instance.EnemyDied(this);
         Destroy(gameObject, 3);
     }
 
-    private IEnumerator DieMiageAnime()
+    private IEnumerator HeadshotImageAnime()
     {
         float t = 0;
         imageStartPos = headShotImage.anchoredPosition.y;
@@ -64,7 +63,7 @@ public class Soldier : Enemy
         if (bodyPart.GetBodyPart() == EnemyBody.Head)
         {
             currentHealth = 0;
-            StartCoroutine(DieMiageAnime());
+            StartCoroutine(HeadshotImageAnime());
         }
         else currentHealth -= damage;
         
@@ -98,7 +97,7 @@ public class Soldier : Enemy
     private IEnumerator MoveToPointRoutine()
     {
         int index = 0;
-        transform.LookAt(rout[index]);
+        //transform.LookAt(rout[index]);
         while (true)
         {
             worldDeltaPosition = navMesh.nextPosition - transform.position;

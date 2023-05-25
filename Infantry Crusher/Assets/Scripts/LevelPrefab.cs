@@ -27,5 +27,6 @@ public class LevelPrefab : MonoBehaviour
 public class LevelSegment
 {
     public Transform playerPos;
+    public Transform dronPos;
     public List<Transform> enemyPosesInSegment;
 }

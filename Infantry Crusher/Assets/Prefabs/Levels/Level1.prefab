@@ -248,8 +248,71 @@ Transform:
   - {fileID: 7035136244466981326}
   - {fileID: 7035136242437485390}
   - {fileID: 1060326514600387132}
+  - {fileID: 7689258299366143229}
   m_Father: {fileID: 7035136242509582652}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2295417034624152444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5041397813982439002}
+  m_Layer: 0
+  m_Name: dronPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5041397813982439002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295417034624152444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.03, y: 1, z: 8.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1353373875542739851}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4726855489429612688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7689258299366143229}
+  m_Layer: 0
+  m_Name: dronPos (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7689258299366143229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4726855489429612688}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.36, y: 1, z: 60.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1696817134056684965}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5525622629922880997
 GameObject:
@@ -395,10 +458,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelSegments:
   - playerPos: {fileID: 6571472068365699163}
+    dronPos: {fileID: 5041397813982439002}
     enemyPosesInSegment:
     - {fileID: 7035136243381442949}
     - {fileID: 7035136244195726309}
   - playerPos: {fileID: 1060326514600387132}
+    dronPos: {fileID: 7689258299366143229}
     enemyPosesInSegment:
     - {fileID: 7035136244466981326}
     - {fileID: 7035136242437485390}
@@ -1082,6 +1147,7 @@ Transform:
   - {fileID: 7035136244195726309}
   - {fileID: 7035136243381442949}
   - {fileID: 6571472068365699163}
+  - {fileID: 5041397813982439002}
   m_Father: {fileID: 7035136242509582652}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

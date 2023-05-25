@@ -18,6 +18,9 @@ MonoBehaviour:
       - Count: 5
         enemyType: 1
         enemyDifficult: 0
+      - Count: 2
+        enemyType: 0
+        enemyDifficult: 0
     - inWaves:
       - Count: 2
         enemyType: 1

@@ -11,12 +11,13 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Vector3 randomSpawnPos;
     [SerializeField] List<Transform> spawnPos;
     [SerializeField] Transform centerPos;
-    [SerializeField] Transform playerPos;
+    Transform playerPos;
+    private Transform dropSpawnPos;
     [SerializeField] private int nextWaveTime;
     [SerializeField] List<Enemy> spawnedEnemies;
     private StagePull stagePull;
-    
-    
+    private float diedEnemyCount = 0;
+    public float DiedEnemyCount { get { return diedEnemyCount; } }
 
     private Vector3 waveSpawnPos;
     private void Awake()
@@ -42,8 +43,9 @@ public class EnemyManager : MonoBehaviour
     {
         stagePull = _stagePull;
     }
-    public void SetEnemySpawnPosInCurrentStage(List<Transform> enemyPoses)
+    public void SetEnemySpawnPosInCurrentStage(List<Transform> enemyPoses,Transform dropPos)
     {
+        dropSpawnPos = dropPos;
         spawnPos = enemyPoses;
     }
 
@@ -105,13 +107,22 @@ public class EnemyManager : MonoBehaviour
         {
             if (allEnemies[i].enemyType == inWave.enemyType && allEnemies[i].enemyDifficult == inWave.enemyDifficult)
             {
-                Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-randomSpawnPos.x, randomSpawnPos.x),
-                                                randomSpawnPos.y,
-                                                UnityEngine.Random.Range(-randomSpawnPos.z, randomSpawnPos.z));
-                Enemy enemy = Instantiate(allEnemies[i].enemyPrefab, waveSpawnPos+randomPos, Quaternion.identity, this.transform);
-                enemy.transform.LookAt(centerPos);
-
-                enemy.AddToRout(centerPos);
+                Vector3 randomPos = Vector3.zero;
+                if (inWave.enemyType is EnemyType.Flying)
+                {
+                    randomPos = UnityEngine.Random.insideUnitCircle * 5;
+                    randomPos.Set(randomPos.x, 0, randomPos.y);
+                    randomPos += dropSpawnPos.position;
+                }
+                else
+                {
+                    randomPos.Set(UnityEngine.Random.Range(-randomSpawnPos.x, randomSpawnPos.x),
+                                                    randomSpawnPos.y,
+                                                    UnityEngine.Random.Range(-randomSpawnPos.z, randomSpawnPos.z));
+                    randomPos += waveSpawnPos;
+                }
+                Enemy enemy = Instantiate(allEnemies[i].enemyPrefab, randomPos, Quaternion.identity, this.transform);
+                
                 enemy.Player = playerPos;
                 PointerManager.Instance.AddToList(enemy);
                 enemy.InitEnemy();
@@ -139,5 +150,14 @@ public class EnemyManager : MonoBehaviour
             Destroy(spawnedEnemies[i].gameObject);
         }
         spawnedEnemies.Clear();
+    }
+
+    public void EnemyDied(Enemy enemy)
+    {
+        RemoveFromList(enemy);
+        PointerManager.Instance.RemoveFromList(enemy);
+        diedEnemyCount++;
+        GameView.instance.IncreaseProgressBar();
+        LevelManager.instance.CheckLevelState();
     }
 }

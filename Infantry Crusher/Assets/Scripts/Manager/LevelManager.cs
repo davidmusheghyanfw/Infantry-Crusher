@@ -54,7 +54,8 @@ public class LevelManager : MonoBehaviour
         CalculateEnemyInCurrentStage();
         EnemyManager.instance.SetEnemyPull(currentLevelDefinition.enemyPull.stagePulls[currentStage]);
         PlayerController.instance.ToNextGun(currentStage);
-        EnemyManager.instance.SetEnemySpawnPosInCurrentStage(currentLevelDefinition.level.levelSegments[currentStage].enemyPosesInSegment);
+        EnemyManager.instance.SetEnemySpawnPosInCurrentStage(currentLevelDefinition.level.levelSegments[currentStage].enemyPosesInSegment,
+            currentLevelDefinition.level.levelSegments[currentStage].dronPos);
     }
 
 
@@ -92,5 +93,34 @@ public class LevelManager : MonoBehaviour
     {
         currentStage = 0;
         Destroy(level);
+    }
+
+    public void CheckLevelState()
+    {
+        if (EnemyManager.instance.DiedEnemyCount == EnemyCount)
+        {
+            GameManager.instance.IsPlayerInteractble = false;
+            LevelEndView.instance.ActiveLevelWin();
+        }
+        else if (EnemyManager.instance.DiedEnemyCount == EnemyCountInStage)
+        {
+            GameManager.instance.IsPlayerInteractble = false;
+            ToNextStage();
+        }
+    }
+
+    public void CheckPlayeHealth()
+    {
+        if (PlayerController.instance.Health <= 0)
+        {
+            GameManager.instance.IsPlayerInteractble = false;
+            CameraController.instance.SwitchCamera(CameraState.End);
+
+            CameraController.instance.StartTrackedDollAnimRoutine();
+            CharacterController.instance.VisualDieAnim();
+            this.Timer(2f, () => {
+                LevelEndView.instance.ActiveLevelLoose();
+            });
+        }
     }
 }

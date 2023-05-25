@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 104
+  controlID: 100
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,8 +216,8 @@ MonoBehaviour:
     y: 0
     width: 646
     height: 647
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -297,8 +297,8 @@ MonoBehaviour:
     y: 0
     width: 464
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -422,9 +422,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b00d0500
-      m_LastClickedID: 331184
-      m_ExpandedIDs: 6488daff96aadaffb00d0500b40d0500ba0d0500
+      m_SelectedIDs: 70d8f9ff
+      m_LastClickedID: -403344
+      m_ExpandedIDs: 72d8f9ff7ed8f9ff605e0100645e0100865e0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -685,9 +685,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 19.155394, y: 9.087645, z: 17.16187}
+    m_Target: {x: -0.708604, y: -0.36469668, z: -8.221282}
     speed: 2
-    m_Value: {x: 19.155394, y: 9.087645, z: 17.16187}
+    m_Value: {x: -0.708604, y: -0.36469668, z: -8.221282}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -734,13 +734,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.0021517563, y: -0.9975993, z: 0.06143057, w: -0.034724884}
+    m_Target: {x: -0.0038464253, y: 0.9962877, z: -0.059847508, w: -0.063448995}
     speed: 2
-    m_Value: {x: -0.0020594138, y: -0.9975562, z: 0.061427936, w: -0.033225313}
+    m_Value: {x: -0.004860682, y: 0.995028, z: -0.06126938, w: -0.07837014}
   m_Size:
-    m_Target: 8.013155
+    m_Target: 6.363398
     speed: 2
-    m_Value: 1.3177044
+    m_Value: 24.637856
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -758,7 +758,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.07480107, y: 0.36690137, z: -0.027023843, w: 0.9272498}
+  m_LastSceneViewRotation: {x: 0.22896983, y: 0.37346455, z: -0.0879724, w: 0.8954399}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -807,36 +807,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Bullet
+    - Assets/Prefabs/Enemy/Dron
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Bullet
+  - Assets/Prefabs/Enemy/Dron
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\GitHub\Infantry-Crusher\Infantry Crusher
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 413}
-    m_SelectedIDs: fea00000
-    m_LastClickedID: 41214
-    m_ExpandedIDs: 00000000b4a00000b6a00000b8a00000baa00000bca00000bea00000c0a00000c2a00000c4a00000c6a00000caa00000cca00000cea00000d0a00000d2a00000f0a00000f4a0000004a100000aa1000096cc00009ccc00009ecc0000a2cc0000accc0000d6cc0000e0cc000056d1000058d100005ad100005cd1000064d10000c6d10000c8d100009ad200009cd200009ed20000a0d20000a2d20000a4d2000046a001004ca001003283040048ea040000ca9a3b
+    scrollPos: {x: 0, y: 429}
+    m_SelectedIDs: 5ca40000
+    m_LastClickedID: 42076
+    m_ExpandedIDs: 00000000c2a30000c4a30000c6a30000c8a30000caa30000cca30000cea30000d0a30000d2a30000d4a30000d6a30000d8a30000daa30000dca30000dea30000e4a30000e8a30000f0a30000f2a30000f4a30000f6a30000f8a30000faa30000fca30000fea3000000a4000002a4000004a4000006a4000008a400000aa400000ca400000ea4000010a4000012a4000014a4000016a400002ca400004ea400008aa4000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Solder
+      m_OriginalName: Solder
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 75376
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -850,7 +850,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b4a00000b6a00000b8a00000baa00000bca00000bea00000c0a00000c2a00000c4a00000c6a00000c8a00000caa00000cca00000cea00000d0a00000d2a00000
+    m_ExpandedIDs: 00000000c2a30000c4a30000c6a30000c8a30000caa30000cca30000cea30000d0a30000d2a30000d4a30000d6a30000d8a30000daa30000dca30000dea30000e0a30000e2a30000e4a30000e6a30000e8a30000eaa30000eca30000eea30000f0a30000f2a30000f4a30000f6a30000f8a30000faa30000fca30000fea3000000a4000002a4000004a4000006a4000008a400000aa400000ca400000ea4000010a4000012a4000014a4000016a40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -966,7 +966,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 30692
+  m_LastSelectedObjectID: 44770
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1152,9 +1152,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1457
+    x: 1456
     y: 73
-    width: 462
+    width: 463
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

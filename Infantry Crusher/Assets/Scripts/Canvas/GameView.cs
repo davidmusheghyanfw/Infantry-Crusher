@@ -41,31 +41,11 @@ public class GameView : MonoBehaviour
     public void IncreaseProgressBar()
     {
         progressBar.value++;
-        if(progressBar.value == progressBar.maxValue)
-        {
-            GameManager.instance.IsPlayerInteractble = false;
-            LevelEndView.instance.ActiveLevelWin();
-        }
-        else if(progressBar.value == LevelManager.instance.EnemyCountInStage)
-        {
-            GameManager.instance.IsPlayerInteractble = false;
-            LevelManager.instance.ToNextStage();
-        }
     }
     public void ChangeHealtBarValue()
     {
         healthBar.value = PlayerController.instance.Health;
-        if(healthBar.value <= healthBar.minValue)
-        {
-            GameManager.instance.IsPlayerInteractble = false;
-            CameraController.instance.SwitchCamera(CameraState.End);
-
-            CameraController.instance.StartTrackedDollAnimRoutine();
-                CharacterController.instance.VisualDieAnim();
-            this.Timer(2f, () => {
-            LevelEndView.instance.ActiveLevelLoose();
-            });
-        }
+        
     }
 
     public void FastWin()
