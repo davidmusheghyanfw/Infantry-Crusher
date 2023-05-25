@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float currentHealth;
     [SerializeField] protected Slider healthBar;
-    protected Transform player;
-    public Transform Player { get { return player; } set { player = value; } }
+    protected Transform character;
+    public Transform Character { get { return character; } set { character = value; } }
     [SerializeField] protected Vector3 randomBorder;
     [SerializeField] protected List<Vector3> rout;
     [SerializeField] protected float shootingTime;

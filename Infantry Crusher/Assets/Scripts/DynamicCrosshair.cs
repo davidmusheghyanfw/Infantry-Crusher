@@ -76,6 +76,10 @@ public class DynamicCrosshair : MonoBehaviour
         }
     }
 
+    public void SetActive(bool value)
+    {
+        gameObject.SetActive(value);
+    }
     public void SetShootingDelay(float value)
     {
         toDefaultDelay = value;

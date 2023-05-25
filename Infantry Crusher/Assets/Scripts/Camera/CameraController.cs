@@ -112,7 +112,7 @@ public class CameraController : MonoBehaviour
     {
         float t = 0;
         float startTime = Time.fixedTime;
-        Debug.Log(activeTrackedDollyCamera,transform);
+      
         while (t < 1)
         {
             t = (Time.fixedTime - startTime) / pathAnimSpeed;

@@ -11,13 +11,13 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Vector3 randomSpawnPos;
     [SerializeField] List<Transform> spawnPos;
     [SerializeField] Transform centerPos;
-    Transform playerPos;
+    Transform character;
     private Transform dropSpawnPos;
     [SerializeField] private int nextWaveTime;
     [SerializeField] List<Enemy> spawnedEnemies;
     private StagePull stagePull;
-    private float diedEnemyCount = 0;
-    public float DiedEnemyCount { get { return diedEnemyCount; } }
+    
+    
 
     private Vector3 waveSpawnPos;
     private void Awake()
@@ -34,13 +34,14 @@ public class EnemyManager : MonoBehaviour
     }
 
     
-    public void SetPlayerPos(Transform pos)
+    public void SetCharacter(Transform obj)
     {
-        playerPos = pos;
+        character = obj;
     }
 
     public void SetEnemyPull(StagePull _stagePull)
     {
+       
         stagePull = _stagePull;
     }
     public void SetEnemySpawnPosInCurrentStage(List<Transform> enemyPoses,Transform dropPos)
@@ -110,7 +111,7 @@ public class EnemyManager : MonoBehaviour
                 Vector3 randomPos = Vector3.zero;
                 if (inWave.enemyType is EnemyType.Flying)
                 {
-                    randomPos = UnityEngine.Random.insideUnitCircle * 5;
+                    randomPos = UnityEngine.Random.insideUnitCircle * 2;
                     randomPos.Set(randomPos.x, 0, randomPos.y);
                     randomPos += dropSpawnPos.position;
                 }
@@ -123,7 +124,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 Enemy enemy = Instantiate(allEnemies[i].enemyPrefab, randomPos, Quaternion.identity, this.transform);
                 
-                enemy.Player = playerPos;
+                enemy.Character = character;
                 PointerManager.Instance.AddToList(enemy);
                 enemy.InitEnemy();
                 spawnedEnemies.Add(enemy);
@@ -156,7 +157,7 @@ public class EnemyManager : MonoBehaviour
     {
         RemoveFromList(enemy);
         PointerManager.Instance.RemoveFromList(enemy);
-        diedEnemyCount++;
+        LevelManager.instance.DiedEnemyCount++;
         GameView.instance.IncreaseProgressBar();
         LevelManager.instance.CheckLevelState();
     }

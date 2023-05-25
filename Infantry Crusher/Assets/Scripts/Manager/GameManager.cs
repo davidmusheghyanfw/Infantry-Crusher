@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     public void StageStart()
     {
         PlayerController.instance.InitPlayer();
+        DynamicCrosshair.instance.SetActive(true);
         this.Timer(1f, () =>
         {
             EnemyManager.instance.StartEnemySpawnRoutine();

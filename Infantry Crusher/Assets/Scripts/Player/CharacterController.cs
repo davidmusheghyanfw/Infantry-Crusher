@@ -26,7 +26,7 @@ public class CharacterController : MonoBehaviour
     public void InitCharacterController()
     {
         transform.position = startPos.position;
-        EnemyManager.instance.SetPlayerPos(transform);
+      
         CameraController.instance.GetCameraProperties(CameraState.Follow).camera = camera;
         CameraController.instance.SwitchCamera(CameraState.Follow);
         CameraController.instance.SetFollowTarget(CameraState.Follow, transform);
@@ -48,7 +48,7 @@ public class CharacterController : MonoBehaviour
         CameraController.instance.SwitchCamera(CameraState.Follow);
         transform.LookAt(player);
         animator.Play("Fast Run");
-             
+        DynamicCrosshair.instance.SetActive(false);     
         StartCoroutine(StopingRoutine());
     }
 
@@ -71,8 +71,9 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void VisualDieAnim()
+    public void Die()
     {
         animator.Play("Die");
+        GetComponent<Collider>().enabled = false;
     }
 }

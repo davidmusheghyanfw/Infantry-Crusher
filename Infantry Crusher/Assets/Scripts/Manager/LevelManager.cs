@@ -10,6 +10,9 @@ public class LevelManager : MonoBehaviour
     private int currentStage = 0;
     private int enemyCount;
     private int enemyCountInStage;
+    private float diedEnemyCount = 0;
+
+    public float DiedEnemyCount { get { return diedEnemyCount; } set { diedEnemyCount = value; } }
     public int EnemyCount { get { return enemyCount; } }
     public int EnemyCountInStage { get { return enemyCountInStage; } }
 
@@ -24,7 +27,7 @@ public class LevelManager : MonoBehaviour
     {
         SetCurrentLevel();
         level = Instantiate(currentLevelDefinition.level.gameObject, Vector3.zero, Quaternion.identity);
-       
+        diedEnemyCount = 0;
         CalculateEnemyCountInLevel();
         InitPlayerGuns();
         
@@ -46,13 +49,14 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < currentLevelDefinition.level.GetLevelSegmentCount(); i++)
         {
-            PlayerController.instance.AddNewGun(currentLevelDefinition.level.levelSegments[i].playerPos);
+            PlayerController.instance.AddNewGun(currentLevelDefinition.level.levelSegments[i].gunSpawnPos);
         }
     }
     public void InitStage()
     {
         CalculateEnemyInCurrentStage();
         EnemyManager.instance.SetEnemyPull(currentLevelDefinition.enemyPull.stagePulls[currentStage]);
+        EnemyManager.instance.SetCharacter(currentLevelDefinition.level.characterPos);
         PlayerController.instance.ToNextGun(currentStage);
         EnemyManager.instance.SetEnemySpawnPosInCurrentStage(currentLevelDefinition.level.levelSegments[currentStage].enemyPosesInSegment,
             currentLevelDefinition.level.levelSegments[currentStage].dronPos);
@@ -97,12 +101,12 @@ public class LevelManager : MonoBehaviour
 
     public void CheckLevelState()
     {
-        if (EnemyManager.instance.DiedEnemyCount == EnemyCount)
+        if (DiedEnemyCount == EnemyCount)
         {
             GameManager.instance.IsPlayerInteractble = false;
             LevelEndView.instance.ActiveLevelWin();
         }
-        else if (EnemyManager.instance.DiedEnemyCount == EnemyCountInStage)
+        else if (DiedEnemyCount == EnemyCountInStage)
         {
             GameManager.instance.IsPlayerInteractble = false;
             ToNextStage();
@@ -117,7 +121,7 @@ public class LevelManager : MonoBehaviour
             CameraController.instance.SwitchCamera(CameraState.End);
 
             CameraController.instance.StartTrackedDollAnimRoutine();
-            CharacterController.instance.VisualDieAnim();
+            CharacterController.instance.Die();
             this.Timer(2f, () => {
                 LevelEndView.instance.ActiveLevelLoose();
             });

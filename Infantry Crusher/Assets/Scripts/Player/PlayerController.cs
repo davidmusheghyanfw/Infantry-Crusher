@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 verticalLimit;
     [SerializeField] private Vector2 horizontalLimit;
 
-    [SerializeField] private float health = 100f;
+    [SerializeField] private float maxHealth;
+    private float health;
     public float Health { get { return health; } }
+    public float MaxHealth { get { return maxHealth; } }
 
     Vector3 deltaPos;
     Vector3 prevRot = Vector3.zero;
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     public void InitPlayer()
     {
+
+        health = maxHealth;
         CameraController.instance.SwitchCamera(CameraState.Player);
         CameraController.instance.SetFollowTarget(CameraState.Player, activeGun.transform);
         CameraController.instance.SetAimTarget(CameraState.Player, activeGun.transform);
@@ -101,6 +105,7 @@ public class PlayerController : MonoBehaviour
         GameView.instance.ChangeHealtBarValue();
         LevelManager.instance.CheckPlayeHealth();
     }
+
 
     public void ClearAllGuns()
     {

@@ -80,7 +80,7 @@ public class Soldier : Enemy
         //if (rout.Count < 0) return;
         navMesh.updatePosition = false;
         StartMoveToPointRoutine();
-        navMesh.SetDestination(player.position);
+        navMesh.SetDestination(character.transform.position);
     }
     private void StartMoveToPointRoutine()
     {
@@ -105,7 +105,7 @@ public class Soldier : Enemy
             if (worldDeltaPosition.magnitude > navMesh.radius)
             {
                 navMesh.nextPosition = transform.position + 0.9f * worldDeltaPosition;
-                navMesh.SetDestination(player.position);
+                navMesh.SetDestination(character.transform.position);
             }
          
             canvas.transform.LookAt(canvas.transform.position + Camera.main.transform.rotation * -Vector3.back,
@@ -117,6 +117,7 @@ public class Soldier : Enemy
 
     public override void InShootingPlace()
     {
+        StopMoveToPointRoutine();
         navMesh.enabled = false;
         animator.SetBool("IsStopping", true);
         StartShootingRoutine();
@@ -138,15 +139,15 @@ public class Soldier : Enemy
 
     public override IEnumerator ShootingRoutine()
     {
-        
+        transform.LookAt(character);
         yield return new WaitForSeconds(1f);
         while (true)
         {
             if (currentHealth <= 0) break;
             animator.Play("Firing Rifle");
             Bullet obj = Instantiate(bullet, shootPos.position, Quaternion.identity);
-            obj.transform.LookAt(Camera.main.transform);
-            obj.BulletInit(damage,50, Camera.main.transform.position, false);
+            obj.transform.LookAt(CameraController.instance.Main.transform);
+            obj.BulletInit(damage,50, CameraController.instance.Main.transform.position, false);
             yield return new WaitForSeconds(shootingTime);
            
         }

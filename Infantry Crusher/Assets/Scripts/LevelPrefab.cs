@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class LevelPrefab : MonoBehaviour
 {
     public List<LevelSegment> levelSegments = new List<LevelSegment>();
-   
+    public Transform characterPos;
     public GameObject GetLevel()
     {
         return gameObject;
@@ -26,7 +26,8 @@ public class LevelPrefab : MonoBehaviour
 [System.Serializable]
 public class LevelSegment
 {
-    public Transform playerPos;
+    public Transform gunSpawnPos;
+   
     public Transform dronPos;
     public List<Transform> enemyPosesInSegment;
 }

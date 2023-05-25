@@ -29,7 +29,7 @@ public class GameView : MonoBehaviour
     private void InitHealthBar()
     {
         healthBar.minValue = 0;
-        healthBar.value = healthBar.maxValue = PlayerController.instance.Health;
+        healthBar.value = healthBar.maxValue = PlayerController.instance.MaxHealth;
     }
     private void InitProgressBar()
     {
