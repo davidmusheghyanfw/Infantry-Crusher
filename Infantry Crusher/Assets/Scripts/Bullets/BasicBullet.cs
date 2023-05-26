@@ -12,7 +12,8 @@ public class BasicBullet : Bullet
     }
     public override void FlyingProcess()
     {
-        rb.velocity = transform.forward * speed; ;
+        rb.velocity = transform.forward * speed;
+        
     }
 
     private IEnumerator LifeTImeRoutine()
@@ -23,11 +24,14 @@ public class BasicBullet : Bullet
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out IDestroyable destroyable))
-        {
-            destroyable.Damaged(damage);
-            DynamicCrosshair.instance.SetHit();
-        }
+        
+        DynamicCrosshair.instance.SetHit();
+        Impact(collision);
         gameObject.SetActive(false);
+    }
+
+    public override void Impact(Collision collision)
+    {
+        base.Impact(collision);
     }
 }

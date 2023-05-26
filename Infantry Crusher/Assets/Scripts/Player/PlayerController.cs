@@ -8,7 +8,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private List<Gun> gunList = new List<Gun>();
     [SerializeField] private Gun selectedGun;
-    [SerializeField] private Gun activeGun;
+    private Gun activeGun;
+
+    [SerializeField] private AdditionalGun selectedAdditionalGun;
+    private AdditionalGun activeAdditionalGun;
+
+    private int additionalGunCounter = 0;
 
     [SerializeField] private float rotationControll;
     public float RotationControll { get { return rotationControll; } set { rotationControll = value; } }
@@ -46,18 +51,23 @@ public class PlayerController : MonoBehaviour
         CameraController.instance.SwitchCamera(CameraState.Player);
         CameraController.instance.SetFollowTarget(CameraState.Player, activeGun.transform);
         CameraController.instance.SetAimTarget(CameraState.Player, activeGun.transform);
-        //transform.position = new Vector3(activeGun.transform.position.x, transform.position.y, activeGun.transform.position.z);
-        CameraController.instance.SwitchCamera(CameraState.Player);
+        
     }
     public void AddNewGun(Transform gunPos)
     {
         gunList.Add(Instantiate(selectedGun, gunPos.position, Quaternion.identity, transform));
+        if (activeAdditionalGun is null)
+        {
+            activeAdditionalGun = Instantiate(selectedAdditionalGun, Vector3.zero, Quaternion.identity);
+        }
     }
     public void ToNextGun(int index)
     {
         activeGun = gunList[index];
         activeGun.BulletControllerInstance = BulletController.instance;
-        
+        activeAdditionalGun.InitAdditionalGun(activeGun.AdditionalGunPos);
+        activeAdditionalGun.transform.parent = activeGun.transform;
+
         CharacterController.instance.GetNextPoin(activeGun.transform);
         this.Timer(1f, () => { 
         CharacterController.instance.RunToPos();
@@ -97,6 +107,15 @@ public class PlayerController : MonoBehaviour
     void OnTouchUp(Vector3 lastPos)
     {
         if(activeGun is not null) activeGun.StopVisual();
+        if (GameManager.instance.IsPlayerInteractble)
+        {
+            if (activeAdditionalGun.IsPreparedToShoot)
+            {
+                activeAdditionalGun.Shoot();
+                activeAdditionalGun.Hide();
+                additionalGunCounter = 0;
+            }
+        }
     }
 
     public void Damaged(float damage)
@@ -114,5 +133,17 @@ public class PlayerController : MonoBehaviour
             Destroy(gunList[i].gameObject);
         }
         gunList.Clear();
+        Destroy(activeAdditionalGun.gameObject);
+    }
+
+    public void IncreaseAdditionalGunCounter()
+    {
+        if (additionalGunCounter >= activeAdditionalGun.ActivateLimit) return;
+        additionalGunCounter++;
+        if (additionalGunCounter >= activeAdditionalGun.ActivateLimit)
+        {
+            activeAdditionalGun.Show();
+           
+        }
     }
 }
