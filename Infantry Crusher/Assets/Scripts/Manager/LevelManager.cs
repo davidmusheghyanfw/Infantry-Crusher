@@ -47,6 +47,7 @@ public class LevelManager : MonoBehaviour
 
     public void InitPlayerGuns()
     {
+        PlayerController.instance.AddAdditionalGun();
         for (int i = 0; i < currentLevelDefinition.level.GetLevelSegmentCount(); i++)
         {
             PlayerController.instance.AddNewGun(currentLevelDefinition.level.levelSegments[i].gunSpawnPos);

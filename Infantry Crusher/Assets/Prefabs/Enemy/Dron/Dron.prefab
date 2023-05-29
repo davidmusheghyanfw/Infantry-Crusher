@@ -340,6 +340,12 @@ MonoBehaviour:
   bullet: {fileID: 5304774090230231546, guid: 3f6e6c0e75b310b428ce50cdd42869ab, type: 3}
   shootPos: {fileID: 892559937066091594}
   canvas: {fileID: 5298415762585747710}
+  propellers:
+  - {fileID: 5451752135737210696}
+  - {fileID: 7097408836509690440}
+  - {fileID: 5517297527735412247}
+  - {fileID: 5810936054628987374}
+  propellerRotationSpeed: 1000
   ToStartPosTime: 1
   SwitchPosTime: 5
 --- !u!65 &5118229828768500070
@@ -353,8 +359,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.82075703, y: 0.3189124, z: 0.45236748}
-  m_Center: {x: -0.010674894, y: 0.31064576, z: 0.16324773}
+  m_Size: {x: 0.82075703, y: 0.3189124, z: 0.95423114}
+  m_Center: {x: -0.010674894, y: 0.31064576, z: -0.087684095}
 --- !u!54 &3077851302499299025
 Rigidbody:
   m_ObjectHideFlags: 0

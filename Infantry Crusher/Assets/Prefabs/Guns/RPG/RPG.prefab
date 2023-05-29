@@ -1024,7 +1024,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5897039300299547326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.007720067, y: 0.99216205, z: 0.095534295, w: -0.080176}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
@@ -1051,7 +1051,7 @@ Transform:
   - {fileID: 5754285207280864380}
   m_Father: {fileID: 7013042024846600116}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -11, y: 189.24, z: 0}
 --- !u!95 &6103656633656794061
 Animator:
   serializedVersion: 4
@@ -1340,7 +1340,7 @@ MonoBehaviour:
   animator: {fileID: 6103656633656794061}
   activateLimit: 4
   damage: 500
-  speed: 6
+  speed: 20
   rpgBullet: {fileID: 6851952402884742115, guid: 22c99e7e81e02964c85dd37d0adc7485,
     type: 3}
   bulletSpawnPos: {fileID: 5754285207280864380}

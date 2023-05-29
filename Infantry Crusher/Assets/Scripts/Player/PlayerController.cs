@@ -56,10 +56,12 @@ public class PlayerController : MonoBehaviour
     public void AddNewGun(Transform gunPos)
     {
         gunList.Add(Instantiate(selectedGun, gunPos.position, Quaternion.identity, transform));
-        if (activeAdditionalGun is null)
-        {
-            activeAdditionalGun = Instantiate(selectedAdditionalGun, Vector3.zero, Quaternion.identity);
-        }
+      
+    }
+
+    public void AddAdditionalGun()
+    {
+        activeAdditionalGun = Instantiate(selectedAdditionalGun, Vector3.zero, Quaternion.identity);
     }
     public void ToNextGun(int index)
     {

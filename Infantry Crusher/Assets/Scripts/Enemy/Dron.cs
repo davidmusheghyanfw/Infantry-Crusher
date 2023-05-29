@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class Dron : Enemy, IDestroyable
 {
-
+    [SerializeField] private List<Transform> propellers;
+    [SerializeField] private float propellerRotationSpeed;
     [SerializeField] float ToStartPosTime;
     [SerializeField] float SwitchPosTime;
     public override void Die()
     {
         healthBar.gameObject.SetActive(false);
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        StopPropellerRotatingRoutine();
         StopShootingRoutine();
         StopSwitchPosRoutnie();
         EnemyManager.instance.EnemyDied(this);
@@ -29,6 +31,7 @@ public class Dron : Enemy, IDestroyable
     public override void Move()
     {
         StartCoroutine(GoToStartPos());
+        StartPropellerRotatingRoutine();
     }
 
     IEnumerator GoToStartPos()
@@ -134,5 +137,32 @@ public class Dron : Enemy, IDestroyable
     GameObject IDestroyable.gameObject()
     {
         return gameObject;
+    }
+
+    private void StartPropellerRotatingRoutine()
+    {
+        if (PropellerRotatingRoutineC != null) StopCoroutine(PropellerRotatingRoutineC);
+        PropellerRotatingRoutineC = StartCoroutine(PropellerRotatingRoutine());
+    }
+
+    private void StopPropellerRotatingRoutine()
+    {
+        if (PropellerRotatingRoutineC != null) StopCoroutine(PropellerRotatingRoutineC);
+    }
+
+    Coroutine PropellerRotatingRoutineC;
+
+    public IEnumerator PropellerRotatingRoutine()
+    {
+
+        //shootPos.LookAt(LookToPlayerPos);
+        while (true)
+        {
+            for (int i = 0; i < propellers.Count; i++)
+            {
+                propellers[i].Rotate(0, 0,propellerRotationSpeed * Time.fixedDeltaTime);
+            }
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

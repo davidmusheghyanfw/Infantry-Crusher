@@ -24,8 +24,7 @@ public class BasicBullet : Bullet
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-        DynamicCrosshair.instance.SetHit();
+        if(collision.gameObject.TryGetComponent<IDestroyable>(out IDestroyable destroyable)) DynamicCrosshair.instance.SetHit();
         Impact(collision);
         gameObject.SetActive(false);
     }

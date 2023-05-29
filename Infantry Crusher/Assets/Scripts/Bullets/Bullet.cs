@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
         damage = _damage;
         direction = _direction;
         isExplosive = _isExplosive;
+        
     }
     public virtual void FlyingProcess()
     {
@@ -26,6 +27,7 @@ public class Bullet : MonoBehaviour
     }
     public virtual void Impact(Collision collision)
     {
+        
         if (isExplosive)
         {
             var surroundingObjects = Physics.OverlapSphere(transform.position, explosionRadius);

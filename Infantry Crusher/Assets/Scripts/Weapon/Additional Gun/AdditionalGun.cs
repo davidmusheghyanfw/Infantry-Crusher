@@ -23,8 +23,6 @@ public class AdditionalGun : MonoBehaviour
        
     }
 
-   
-
     public virtual void Show()
     {
         isPreparedToShoot = true;

@@ -19,9 +19,13 @@ public class RPG : AdditionalGun
 
     private void SetupBullet()
     {
-        if (bullet is not null) return;
-            bullet = Instantiate(rpgBullet, bulletSpawnPos.position, Quaternion.identity,bulletSpawnPos);
-        bullet.gameObject.SetActive(true);
+        this.Timer(1f, () =>
+            {
+                bullet = Instantiate(rpgBullet, bulletSpawnPos.position, Quaternion.identity, bulletSpawnPos);
+                bullet.GetComponent<Collider>().enabled = true;
+                bullet.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                bullet.gameObject.SetActive(true);
+            });
     }
     public override void Hide()
     {
