@@ -1340,7 +1340,7 @@ MonoBehaviour:
   animator: {fileID: 6103656633656794061}
   activateLimit: 4
   damage: 500
-  speed: 20
+  speed: 30
   rpgBullet: {fileID: 6851952402884742115, guid: 22c99e7e81e02964c85dd37d0adc7485,
     type: 3}
   bulletSpawnPos: {fileID: 5754285207280864380}

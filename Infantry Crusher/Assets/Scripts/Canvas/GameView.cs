@@ -8,6 +8,7 @@ public class GameView : MonoBehaviour
 {
     public static GameView instance;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider additionalGunBar;
     [SerializeField] private Slider progressBar;
     [SerializeField] private TMP_Text currentLevelTxt;
     [SerializeField] private TMP_Text nextLevelTxt;
@@ -24,6 +25,7 @@ public class GameView : MonoBehaviour
     {
         InitHealthBar();
         InitProgressBar();
+        InitAdditionalGunBar();
     }
 
     private void InitHealthBar()
@@ -37,6 +39,15 @@ public class GameView : MonoBehaviour
         nextLevelTxt.text = (DataManager.instance.GetLevelNumber()+1).ToString();
         progressBar.minValue = progressBar.value = 0;
         progressBar.maxValue = LevelManager.instance.EnemyCount;
+    }
+    private void InitAdditionalGunBar()
+    {
+        additionalGunBar.minValue = additionalGunBar.value = 0;
+        additionalGunBar.maxValue = PlayerController.instance.GetAdditionalGun().ActivateLimit;
+    }
+    public void SetValueAdditionalGunBar(int value)
+    {
+        additionalGunBar.value = value;
     }
     public void IncreaseProgressBar()
     {

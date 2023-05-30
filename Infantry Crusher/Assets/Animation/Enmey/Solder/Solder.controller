@@ -83,7 +83,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stepping Forward
+  m_Name: Stopping Forward
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -98,7 +98,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f8dd3647473ca094dad34bd36908378a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 79248887066cae844b92f32af5ee712a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -161,7 +161,7 @@ AnimatorStateMachine:
     m_Position: {x: 580, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7909710540644188901}
-    m_Position: {x: 810, y: 120, z: 0}
+    m_Position: {x: 820, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3262673426579027117}
     m_Position: {x: 530, y: 340, z: 0}
@@ -299,7 +299,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8773296f51c234d4a9f162e9da4db96e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6064058918de39e4d947cb1eee64382b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

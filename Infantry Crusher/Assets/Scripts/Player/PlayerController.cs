@@ -6,21 +6,26 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    [Header("Gun")]
     [SerializeField] private List<Gun> gunList = new List<Gun>();
     [SerializeField] private Gun selectedGun;
     private Gun activeGun;
 
+    [Header("AdditionalGun")]
     [SerializeField] private AdditionalGun selectedAdditionalGun;
     private AdditionalGun activeAdditionalGun;
-
     private int additionalGunCounter = 0;
+    public int AdditionalGunCounter { get { return additionalGunCounter; } }
 
+    [Header("Visual")]
     [SerializeField] private float rotationControll;
     public float RotationControll { get { return rotationControll; } set { rotationControll = value; } }
 
+    [Header("Limits")]
     [SerializeField] private Vector2 verticalLimit;
     [SerializeField] private Vector2 horizontalLimit;
 
+    [Header("Health")]
     [SerializeField] private float maxHealth;
     private float health;
     public float Health { get { return health; } }
@@ -48,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
 
         health = maxHealth;
+        ResetAdditionalGunCount();
         CameraController.instance.SwitchCamera(CameraState.Player);
         CameraController.instance.SetFollowTarget(CameraState.Player, activeGun.transform);
         CameraController.instance.SetAimTarget(CameraState.Player, activeGun.transform);
@@ -62,6 +68,11 @@ public class PlayerController : MonoBehaviour
     public void AddAdditionalGun()
     {
         activeAdditionalGun = Instantiate(selectedAdditionalGun, Vector3.zero, Quaternion.identity);
+        activeAdditionalGun.Hide();
+    }
+    public AdditionalGun GetAdditionalGun()
+    {
+        return activeAdditionalGun;
     }
     public void ToNextGun(int index)
     {
@@ -69,7 +80,7 @@ public class PlayerController : MonoBehaviour
         activeGun.BulletControllerInstance = BulletController.instance;
         activeAdditionalGun.InitAdditionalGun(activeGun.AdditionalGunPos);
         activeAdditionalGun.transform.parent = activeGun.transform;
-
+        activeAdditionalGun.transform.localRotation = Quaternion.Euler(Vector3.zero);
         CharacterController.instance.GetNextPoin(activeGun.transform);
         this.Timer(1f, () => { 
         CharacterController.instance.RunToPos();
@@ -85,13 +96,6 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.instance.IsPlayerInteractble)
         {
-            //cursor = cursorPos;
-            //deltaPos = new Vector3(-cursorPos.y, cursorPos.x, 0) * rotationControll * Time.deltaTime;
-            //limitsChecker = deltaPos + transform.eulerAngles;
-
-            //transform.eulerAngles = limitsChecker;
-
-
             deltaPos = new Vector3(-cursorPos.y, cursorPos.x, 0) * rotationControll * Time.deltaTime;
             overallRot += deltaPos;
             if (overallRot.x < verticalLimit.x) overallRot.x = prevRot.x;
@@ -115,7 +119,7 @@ public class PlayerController : MonoBehaviour
             {
                 activeAdditionalGun.Shoot();
                 activeAdditionalGun.Hide();
-                additionalGunCounter = 0;
+                ResetAdditionalGunCount();
             }
         }
     }
@@ -138,10 +142,16 @@ public class PlayerController : MonoBehaviour
         Destroy(activeAdditionalGun.gameObject);
     }
 
+    public void ResetAdditionalGunCount()
+    {
+        additionalGunCounter = 0;
+        GameView.instance.SetValueAdditionalGunBar(additionalGunCounter);
+    }
     public void IncreaseAdditionalGunCounter()
     {
         if (additionalGunCounter >= activeAdditionalGun.ActivateLimit) return;
         additionalGunCounter++;
+        GameView.instance.SetValueAdditionalGunBar(additionalGunCounter);
         if (additionalGunCounter >= activeAdditionalGun.ActivateLimit)
         {
             activeAdditionalGun.Show();

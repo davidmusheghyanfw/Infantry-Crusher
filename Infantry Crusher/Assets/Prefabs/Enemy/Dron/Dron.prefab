@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858817676569258558}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.0616, z: -0.02}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: -0.039000183, z: -0.92400014}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3579557579969443972}
-  m_RootOrder: 6
+  m_Father: {fileID: 3902261162752195896}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &859607134315913563
 GameObject:
@@ -312,6 +312,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7442175202759103062}
+  - {fileID: 892559937066091594}
   - {fileID: 3902261163025588320}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -348,6 +349,8 @@ MonoBehaviour:
   propellerRotationSpeed: 1000
   ToStartPosTime: 1
   SwitchPosTime: 5
+  VisualCOntainer: {fileID: 3902261163025588320}
+  dronRotAngle: {x: 0, y: 0, z: -30}
 --- !u!65 &5118229828768500070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -407,7 +410,7 @@ Transform:
   m_Children:
   - {fileID: 3579557579969443972}
   m_Father: {fileID: 3902261162752195896}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4244348030374044222
 GameObject:
@@ -446,7 +449,6 @@ Transform:
   - {fileID: 7097408836509690440}
   - {fileID: 5517297527735412247}
   - {fileID: 5810936054628987374}
-  - {fileID: 892559937066091594}
   m_Father: {fileID: 3902261163025588320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}

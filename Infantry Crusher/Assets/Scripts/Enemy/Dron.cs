@@ -9,6 +9,8 @@ public class Dron : Enemy, IDestroyable
     [SerializeField] private float propellerRotationSpeed;
     [SerializeField] float ToStartPosTime;
     [SerializeField] float SwitchPosTime;
+    [SerializeField] private Transform VisualCOntainer;
+    [SerializeField] private Vector3 dronRotAngle;
     public override void Die()
     {
         healthBar.gameObject.SetActive(false);
@@ -81,6 +83,7 @@ public class Dron : Enemy, IDestroyable
                 t = (Time.fixedTime - startTime) / SwitchPosTime;
 
                 transform.position = Vector3.Lerp(startDist, finishPos, t);
+                transform.rotation = Quaternion.Euler(Vector3.Lerp(dronRotAngle*direction,Vector3.zero,t));
                 
                 yield return new WaitForEndOfFrame();
             }

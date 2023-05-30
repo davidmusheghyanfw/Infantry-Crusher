@@ -5,6 +5,7 @@ using UnityEngine;
 public class RPGBullet : Bullet
 {
     [SerializeField] private ParticleSystem impactParticle;
+    [SerializeField] private ParticleSystem FlyingParicle;
 
     public override void BulletInit(float _damage, float _speed, Vector3 _direction, bool _isExplosive)
     {
@@ -15,6 +16,7 @@ public class RPGBullet : Bullet
     {
         rb.velocity = transform.forward * -1 * speed;
         gameObject.GetComponent<Collider>().enabled = true;
+        FlyingParicle.gameObject.SetActive(true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,7 +29,11 @@ public class RPGBullet : Bullet
     {
       
         base.Impact(collision);
+        
         Instantiate(impactParticle, transform.position, Quaternion.identity);
+        this.Timer(0.1f, () => { 
+        PlayerController.instance.ResetAdditionalGunCount();
         Destroy(gameObject);
+        });
     }
 }
