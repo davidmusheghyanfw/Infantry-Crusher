@@ -8,7 +8,6 @@ public class RPG : AdditionalGun
     public override void InitAdditionalGun(Transform spawnPos)
     {
         base.InitAdditionalGun(spawnPos);
-        //SetupBullet();
     }
     public override void Shoot()
     {

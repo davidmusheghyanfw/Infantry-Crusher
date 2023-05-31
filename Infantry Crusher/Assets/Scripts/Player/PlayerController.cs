@@ -81,10 +81,11 @@ public class PlayerController : MonoBehaviour
         activeAdditionalGun.InitAdditionalGun(activeGun.AdditionalGunPos);
         activeAdditionalGun.transform.parent = activeGun.transform;
         activeAdditionalGun.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        
         CharacterController.instance.GetNextPoin(activeGun.transform);
         this.Timer(1f, () => { 
         CharacterController.instance.RunToPos();
-        
+         overallRot = Vector3.zero;
         });
     }
     void OnTouchDown(Vector3 startPos)

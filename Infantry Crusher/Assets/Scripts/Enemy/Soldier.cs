@@ -8,6 +8,7 @@ public class Soldier : Enemy
 {
     
     private Vector3 worldDeltaPosition = Vector3.zero;
+    [SerializeField] private List<EnemyBodyPart> bodyPartList;
     [SerializeField] private RectTransform headShotImage;
     [SerializeField] private float animTime;
     float imageStartPos;
@@ -28,13 +29,23 @@ public class Soldier : Enemy
       
         StopMoveToPointRoutine();
         StopShootingRoutine();
-      
-        animator.Play("Die");
-       
+        animator.enabled = false;
+        
         EnemyManager.instance.EnemyDied(this);
         Destroy(gameObject, 3);
     }
 
+    private void StartVisualDying(Bullet killingBullet, EnemyBodyPart bodyPart)
+    {
+        for (int i = 0; i < bodyPartList.Count; i++)
+        {
+            bodyPartList[i].GetRigidbody().isKinematic = false;
+            if (killingBullet.GetBulletType() is BulletType.explosive) bodyPartList[i].GetRigidbody().AddExplosionForce(killingBullet.GetExplosionForce(),
+                                                                                    killingBullet.transform.position,
+                                                                                    killingBullet.GetExplosionRadius());
+        }
+        if (killingBullet.GetBulletType() is BulletType.normal) bodyPart.GetRigidbody().AddForce(killingBullet.transform.position.normalized*2);
+    }
     private IEnumerator HeadshotImageAnime()
     {
         float t = 0;
@@ -49,7 +60,7 @@ public class Soldier : Enemy
             yield return new WaitForEndOfFrame();
         }
     }
-    public void TakeDamage(float damage, EnemyBodyPart bodyPart)
+    public void TakeDamage(Bullet _bullet, EnemyBodyPart bodyPart)
     {
         if (currentHealth <= 0) return;
 
@@ -65,14 +76,20 @@ public class Soldier : Enemy
             currentHealth = 0;
             StartCoroutine(HeadshotImageAnime());
         }
-        else currentHealth -= damage;
+        else currentHealth -= _bullet.GetDamage();
         
         
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
         
         healthBar.value = currentHealth;
 
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0)
+        {
+            if (_bullet.GetBulletType() is not BulletType.explosive) PlayerController.instance.IncreaseAdditionalGunCounter();
+             
+            StartVisualDying(_bullet, bodyPart);
+            Die();
+        }
     }
 
     public override void Move()
@@ -148,6 +165,7 @@ public class Soldier : Enemy
             Bullet obj = Instantiate(bullet, shootPos.position, Quaternion.identity);
             obj.transform.LookAt(CameraController.instance.Main.transform);
             obj.BulletInit(damage,50, CameraController.instance.Main.transform.position, false);
+            shootingParticle.Play();
             yield return new WaitForSeconds(shootingTime);
            
         }

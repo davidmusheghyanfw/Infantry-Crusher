@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class Dron : Enemy, IDestroyable
 {
+    [SerializeField] private Transform destroyParticle;
+    [SerializeField] private Color32 destroyMaterialColor;
+    [SerializeField] private MeshRenderer mesh;
+
     [SerializeField] private List<Transform> propellers;
     [SerializeField] private float propellerRotationSpeed;
     [SerializeField] float ToStartPosTime;
     [SerializeField] float SwitchPosTime;
-    [SerializeField] private Transform VisualCOntainer;
+    [SerializeField] private Transform VisualContainer;
     [SerializeField] private Vector3 dronRotAngle;
     public override void Die()
     {
@@ -18,6 +22,10 @@ public class Dron : Enemy, IDestroyable
         StopPropellerRotatingRoutine();
         StopShootingRoutine();
         StopSwitchPosRoutnie();
+
+        destroyParticle.gameObject.SetActive(true);
+        mesh.material.color = destroyMaterialColor;
+        
         EnemyManager.instance.EnemyDied(this);
         Destroy(gameObject, 3);
     }
@@ -116,11 +124,12 @@ public class Dron : Enemy, IDestroyable
             Bullet obj = Instantiate(bullet, shootPos.position, Quaternion.identity);
             obj.transform.LookAt(LookToPlayerPos);
             obj.BulletInit(damage, 50, character.transform.position, false);
+            shootingParticle.Play();
             yield return new WaitForSeconds(0.5f);
         }
     }
 
-    void IDestroyable.Damaged(float damage)
+    void IDestroyable.Damaged(Bullet _bullet)
     {
         if (currentHealth <= 0) return;
 
@@ -129,12 +138,16 @@ public class Dron : Enemy, IDestroyable
             canvas.enabled = true;
         }
 
-        currentHealth -= damage;
+        currentHealth -= _bullet.GetDamage();
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
 
         healthBar.value = currentHealth;
 
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0)
+        {
+            if(_bullet.GetBulletType() is not BulletType.explosive) PlayerController.instance.IncreaseAdditionalGunCounter(); 
+            Die();
+        }
     }
 
     GameObject IDestroyable.gameObject()

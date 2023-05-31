@@ -16,9 +16,17 @@ public class RPGBullet : Bullet
     {
         rb.velocity = transform.forward * -1 * speed;
         gameObject.GetComponent<Collider>().enabled = true;
-        FlyingParicle.gameObject.SetActive(true);
+        //FlyingParicle.gameObject.SetActive(true);
     }
 
+    public override float GetExplosionForce()
+    {
+        return base.GetExplosionForce();
+    }
+    public override float GetExplosionRadius()
+    {
+        return base.GetExplosionRadius();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if(!collision.gameObject.CompareTag("Zona"))
@@ -31,9 +39,17 @@ public class RPGBullet : Bullet
         base.Impact(collision);
         
         Instantiate(impactParticle, transform.position, Quaternion.identity);
-        this.Timer(0.1f, () => { 
-        PlayerController.instance.ResetAdditionalGunCount();
+        
         Destroy(gameObject);
-        });
+    }
+
+    public override float GetDamage()
+    {
+        return base.GetDamage();
+    }
+
+    public override BulletType GetBulletType()
+    {
+        return base.GetBulletType();
     }
 }

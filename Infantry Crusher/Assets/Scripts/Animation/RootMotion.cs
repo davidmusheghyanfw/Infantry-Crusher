@@ -11,12 +11,15 @@ public class RootMotion : MonoBehaviour
     private Vector3 position;
 
     void OnAnimatorMove()
-    { 
-        position = animator.rootPosition;
-        position.y = navMesh.nextPosition.y;
-  
-        navMesh.nextPosition = position;
-        parent.position = position;
+    {
+        if (navMesh.isActiveAndEnabled)
+        {
+            position = animator.rootPosition;
+            position.y = navMesh.nextPosition.y;
+
+            navMesh.nextPosition = position;
+            parent.position = position;
+        }
     }
 
 }

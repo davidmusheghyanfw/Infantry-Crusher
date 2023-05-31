@@ -6,20 +6,26 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] protected Animator animator;
     [SerializeField] protected NavMeshAgent navMesh;
+    [Header("Health")]
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float currentHealth;
     [SerializeField] protected Slider healthBar;
     protected Transform character;
     public Transform Character { get { return character; } set { character = value; } }
+
+    [Header("Rout")]
     [SerializeField] protected Vector3 randomBorder;
     [SerializeField] protected List<Vector3> rout;
+    [Header("Shooting")]
     [SerializeField] protected float shootingTime;
     [SerializeField] protected float damage;
     [SerializeField] protected Bullet bullet;
     [SerializeField] protected Transform shootPos;
     [SerializeField] protected Canvas canvas;
+    [SerializeField] protected ParticleSystem shootingParticle;
    
     public virtual void InitEnemy()
     {

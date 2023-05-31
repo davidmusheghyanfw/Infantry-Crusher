@@ -33,4 +33,12 @@ public class BasicBullet : Bullet
     {
         base.Impact(collision);
     }
+    public override float GetDamage()
+    {
+        return base.GetDamage();
+    }
+    public override BulletType GetBulletType()
+    {
+        return base.GetBulletType();
+    }
 }

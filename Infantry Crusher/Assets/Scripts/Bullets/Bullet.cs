@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public BulletType type;
     protected float damage;
     protected bool isExplosive;
     protected Vector3 direction;
@@ -11,6 +12,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected TrailRenderer trailRenderer;
     [SerializeField] protected float explosionRadius;
+    [SerializeField] protected float explosionForce;
     public TrailRenderer TrailRenderer { get { return trailRenderer; } }
 
     public virtual void BulletInit(float _damage, float _speed, Vector3 _direction, bool _isExplosive)
@@ -21,9 +23,25 @@ public class Bullet : MonoBehaviour
         isExplosive = _isExplosive;
         
     }
+    public virtual float GetExplosionRadius()
+    {
+        return explosionRadius;
+    }
+    public virtual float GetExplosionForce()
+    {
+        return explosionForce;
+    }
     public virtual void FlyingProcess()
     {
 
+    }
+    public virtual BulletType GetBulletType()
+    {
+        return type;
+    }
+    public virtual float GetDamage()
+    {
+        return damage;
     }
     public virtual void Impact(Collision collision)
     {
@@ -37,18 +55,21 @@ public class Bullet : MonoBehaviour
                 if (surroundingObjects[i] is null) continue;
                 if (surroundingObjects[i].TryGetComponent<IDestroyable>(out IDestroyable destroyable))
                 {
-                    destroyable.Damaged(damage);
+                    destroyable.Damaged(this);
                 }
+            
             }
+            
         }
         else
         {
             if (collision.transform.TryGetComponent(out IDestroyable destroyable))
             {
-                destroyable.Damaged(damage);
+                destroyable.Damaged(this);
                 
             }
         }
             
     }
 }
+public enum BulletType {explosive, normal}

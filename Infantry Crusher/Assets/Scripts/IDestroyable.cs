@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IDestroyable
 {
-    public void Damaged(float damage);
+    public void Damaged(Bullet bullet);
 
     public GameObject gameObject();
 }
