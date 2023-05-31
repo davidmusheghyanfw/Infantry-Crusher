@@ -157,7 +157,6 @@ public class EnemyManager : MonoBehaviour
     {
         RemoveFromList(enemy);
         PointerManager.Instance.RemoveFromList(enemy);
-       
         LevelManager.instance.DiedEnemyCount++;
         GameView.instance.IncreaseProgressBar();
         LevelManager.instance.CheckLevelState();
