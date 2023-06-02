@@ -10,9 +10,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] List<EnemyData> allEnemies;
     [SerializeField] private Vector3 randomSpawnPos;
     [SerializeField] List<Transform> spawnPos;
-    [SerializeField] Transform centerPos;
     Transform character;
-    private Transform dropSpawnPos;
+    private Transform dronSpawnPos;
     [SerializeField] private int nextWaveTime;
     [SerializeField] List<Enemy> spawnedEnemies;
     private StagePull stagePull;
@@ -46,7 +45,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void SetEnemySpawnPosInCurrentStage(List<Transform> enemyPoses,Transform dropPos)
     {
-        dropSpawnPos = dropPos;
+        dronSpawnPos = dropPos;
         spawnPos = enemyPoses;
     }
 
@@ -113,7 +112,7 @@ public class EnemyManager : MonoBehaviour
                 {
                     randomPos = UnityEngine.Random.insideUnitCircle * 2;
                     randomPos.Set(randomPos.x, 0, randomPos.y);
-                    randomPos += dropSpawnPos.position;
+                    randomPos += dronSpawnPos.position;
                 }
                 else
                 {

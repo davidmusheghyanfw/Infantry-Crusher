@@ -21,12 +21,13 @@ public class MedalManager : MonoBehaviour
 
     public void InitMedalManager()
     {
+        ClearMedals();
         currentMedalCount = 0;
     }
 
     public void SpawnMedal(Transform spawnPos)
     {
-        if(currentMedalCount>maxMedalCount) return;
+        if(currentMedalCount>=maxMedalCount) return;
         float rnd = Random.Range(0,101);
 
         if(rnd<spawnRate)
@@ -41,6 +42,14 @@ public class MedalManager : MonoBehaviour
             }
         }
         currentMedalCount++;
+    }
+
+    public void ClearMedals()
+    {
+        foreach(Transform obj in transform)
+        {
+            Destroy(obj);
+        }
     }
 
 }

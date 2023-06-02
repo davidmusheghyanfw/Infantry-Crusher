@@ -113,7 +113,6 @@ public class Soldier : Enemy
     Coroutine MoveToPointRoutineC;
     private IEnumerator MoveToPointRoutine()
     {
-        int index = 0;
         //transform.LookAt(rout[index]);
         while (true)
         {
