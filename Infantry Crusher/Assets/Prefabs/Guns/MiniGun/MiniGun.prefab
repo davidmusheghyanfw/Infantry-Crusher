@@ -55,7 +55,7 @@ MonoBehaviour:
   BulletSpawnPoint: {fileID: 8494968098121126961}
   BulletSpeed: 200
   BulletDamage: 50
-  ShootDelay: 0.15
+  shootDelay: 0.5
   visual: {fileID: 8667049554963170576}
 --- !u!1 &5187575632195060737
 GameObject:
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingObject: {fileID: 3279603366086225874}
-  maxSpeed: 50
+  maxSpeed: 200
   delayTime: 4
 --- !u!1001 &8494968098225986238
 PrefabInstance:

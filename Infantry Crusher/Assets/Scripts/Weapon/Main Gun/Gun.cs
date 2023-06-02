@@ -24,8 +24,8 @@ public class Gun : MonoBehaviour
     protected float BulletDamage = 50;
 
     [SerializeField]
-    protected float ShootDelay = 0.5f;
-  
+    protected float shootDelay = 0.5f;
+    public float ShootDelay{get{return shootDelay;} set{ shootDelay = value;}}
     protected float LastShootTime;
 
   
@@ -46,6 +46,11 @@ public class Gun : MonoBehaviour
     public virtual void StopVisual()
     {
 
+    }
+
+    public virtual void StartRecoil()
+    {
+        
     }
     
 }

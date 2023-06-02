@@ -18,7 +18,7 @@ public class MiniGun : Gun
 
     private void Start()
     {
-        DynamicCrosshair.instance.SetShootingDelay(ShootDelay);
+        DynamicCrosshair.instance.SetShootingDelay(shootDelay);
     }
 
     public override Vector3 GetulletDirection()
@@ -42,7 +42,7 @@ public class MiniGun : Gun
     public override void Shoot()
     {
 
-        if (LastShootTime + ShootDelay < Time.time)
+        if (LastShootTime + shootDelay < Time.time)
         {
             ShootingSystem.Play();
             DynamicCrosshair.instance.SetCrosshairSize();
@@ -66,5 +66,9 @@ public class MiniGun : Gun
     public override void StopVisual()
     {
         visual.StopFireVisual();
+    }
+    public override void StartRecoil()
+    {
+        visual.Recoil();
     }
 }

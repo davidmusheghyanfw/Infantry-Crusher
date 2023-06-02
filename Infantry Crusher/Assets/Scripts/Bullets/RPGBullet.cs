@@ -43,13 +43,5 @@ public class RPGBullet : Bullet
         Destroy(gameObject);
     }
 
-    public override float GetDamage()
-    {
-        return base.GetDamage();
-    }
-
-    public override BulletType GetBulletType()
-    {
-        return base.GetBulletType();
-    }
+   
 }

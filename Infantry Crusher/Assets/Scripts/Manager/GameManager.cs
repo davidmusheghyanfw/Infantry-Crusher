@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public void PrepareLevel()
     {
         LevelManager.instance.InitLevelManager();
+        MedalManager.instance.InitMedalManager();
         EnemyManager.instance.InitEnemyManager();
         CharacterController.instance.InitCharacterController();
         GameView.instance.InitLevelUI();

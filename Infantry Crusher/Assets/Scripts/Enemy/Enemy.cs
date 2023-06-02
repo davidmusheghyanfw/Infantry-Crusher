@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Data")]
+    public EnemyDifficult enemyDifficult;
+    public EnemyType enemyType;
+    
     [Header("Components")]
     [SerializeField] protected Animator animator;
     [SerializeField] protected NavMeshAgent navMesh;

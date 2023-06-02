@@ -138,14 +138,14 @@ public class Dron : Enemy, IDestroyable
             canvas.enabled = true;
         }
 
-        currentHealth -= _bullet.GetDamage();
+        currentHealth -= _bullet.Damage;
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
 
         healthBar.value = currentHealth;
 
         if (currentHealth <= 0)
         {
-            if(_bullet.GetBulletType() is not BulletType.explosive) PlayerController.instance.IncreaseAdditionalGunCounter(); 
+            if(_bullet.type is not BulletType.explosive) PlayerController.instance.IncreaseAdditionalGunCounter(); 
             Die();
         }
     }

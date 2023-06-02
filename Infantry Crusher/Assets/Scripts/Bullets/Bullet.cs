@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public BulletType type;
     protected float damage;
+    public float Damage{get{return damage;}}
     protected bool isExplosive;
     protected Vector3 direction;
     protected float speed;
@@ -34,14 +35,6 @@ public class Bullet : MonoBehaviour
     public virtual void FlyingProcess()
     {
 
-    }
-    public virtual BulletType GetBulletType()
-    {
-        return type;
-    }
-    public virtual float GetDamage()
-    {
-        return damage;
     }
     public virtual void Impact(Collision collision)
     {

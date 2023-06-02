@@ -157,6 +157,8 @@ public class EnemyManager : MonoBehaviour
     {
         RemoveFromList(enemy);
         PointerManager.Instance.RemoveFromList(enemy);
+
+        if(enemy.enemyType != EnemyType.Flying) MedalManager.instance.SpawnMedal(enemy.transform);
         LevelManager.instance.DiedEnemyCount++;
         GameView.instance.IncreaseProgressBar();
         LevelManager.instance.CheckLevelState();

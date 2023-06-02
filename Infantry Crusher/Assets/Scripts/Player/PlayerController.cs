@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Gun selectedGun;
     private Gun activeGun;
 
+    [SerializeField] private float gunShootDelay;
+    private float gunCurrentShootDelay;
+
     [Header("AdditionalGun")]
     [SerializeField] private AdditionalGun selectedAdditionalGun;
     private AdditionalGun activeAdditionalGun;
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
     {
 
         health = maxHealth;
+        gunCurrentShootDelay = gunShootDelay;
         ResetAdditionalGunCount();
         CameraController.instance.SwitchCamera(CameraState.Player);
         CameraController.instance.SetFollowTarget(CameraState.Player, activeGun.transform);
@@ -76,8 +80,10 @@ public class PlayerController : MonoBehaviour
     }
     public void ToNextGun(int index)
     {
+
         activeGun = gunList[index];
         activeGun.BulletControllerInstance = BulletController.instance;
+        activeGun.ShootDelay = gunCurrentShootDelay == 0 ? gunShootDelay : gunCurrentShootDelay;
         activeAdditionalGun.InitAdditionalGun(activeGun.AdditionalGunPos);
         activeAdditionalGun.transform.parent = activeGun.transform;
         activeAdditionalGun.transform.localRotation = Quaternion.Euler(Vector3.zero);
@@ -107,7 +113,9 @@ public class PlayerController : MonoBehaviour
             activeGun.transform.rotation = Quaternion.Euler(overallRot);
             //CameraController.instance.UpdateCameraRotation(transform.rotation);
             prevRot = overallRot;
+            //activeGun.StartRecoil();
             activeGun.Shoot();
+            
         }
     }
 
@@ -158,5 +166,12 @@ public class PlayerController : MonoBehaviour
             activeAdditionalGun.Show();
            
         }
+    }
+
+    public void IncreaseShootDelay(float percent)
+    {
+        gunCurrentShootDelay -= gunCurrentShootDelay * percent/100;
+        activeGun.ShootDelay = gunCurrentShootDelay;
+        
     }
 }

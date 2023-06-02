@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MiniGunVisual : MonoBehaviour
 {
@@ -29,6 +30,15 @@ public class MiniGunVisual : MonoBehaviour
     }
 
 
+    public void Recoil()
+    {
+        transform.DOComplete();
+
+        transform.DOLocalMoveZ(transform.localPosition.z-0.2f,0.1f).SetEase(Ease.InExpo).OnComplete(()=>{
+
+            transform.DOLocalMoveZ(transform.localPosition.z+0.2f,0.5f).SetEase(Ease.OutSine);
+        });
+    }
     void StartFireVisualRoutine()
     {
         if(FireRoutineC != null) StopCoroutine(FireRoutineC);

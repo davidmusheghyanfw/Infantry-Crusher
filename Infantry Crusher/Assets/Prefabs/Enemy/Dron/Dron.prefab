@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 892559937066091594}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 5451752135737210696}
   - component: {fileID: 6328268817152046468}
   - component: {fileID: 4105073267679140204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter_propeller_1_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5810936054628987374}
   - component: {fileID: 7783144806694887451}
   - component: {fileID: 8307661031044739390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter_propeller_4_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 7097408836509690440}
   - component: {fileID: 8385260622384345511}
   - component: {fileID: 4713168786035186932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter_propeller_2_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 7754180408892778123}
   - component: {fileID: 5118229828768500070}
   - component: {fileID: 3077851302499299025}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3902261163025588320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VirtualContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 433189104682645281}
   - component: {fileID: 2442649176484168683}
   - component: {fileID: 3350403311278670449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 5517297527735412247}
   - component: {fileID: 7259713942157616709}
   - component: {fileID: 4146194911492803893}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter_propeller_3_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 5298415762585747710}
   - component: {fileID: 110797264078269443}
   - component: {fileID: 4035414098271734451}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 2171717628012734892}
   - component: {fileID: 4534050753041852460}
   - component: {fileID: 6471707546074584978}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter_cam2_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 5976351449709136767}
   - component: {fileID: 4563985122640580287}
   - component: {fileID: 5387318424048718777}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter_cam3_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 3479387467049161902}
   - component: {fileID: 4517065319307104507}
   - component: {fileID: 8709621142807640107}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: quadrocopter_bumper_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 8757249821250127718}
   - component: {fileID: 8888358636898865296}
   - component: {fileID: 8889180495162351258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5857,7 +5857,7 @@ GameObject:
   - component: {fileID: 8757760881717167040}
   - component: {fileID: 8887916365463951282}
   - component: {fileID: 8888475962828269512}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10748,7 +10748,7 @@ GameObject:
   - component: {fileID: 8761383278192047104}
   - component: {fileID: 8888775944137825308}
   - component: {fileID: 8888666005307642792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15639,7 +15639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8190697010500133534}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15674,6 +15674,14 @@ PrefabInstance:
     - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_Name
       value: MuzzleFlash01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992675705445476, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_RootOrder
@@ -15812,9 +15820,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8190697010500133534}
     m_Modifications:
+    - target: {fileID: 105540, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 149992, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
       propertyPath: m_Name
       value: SoftFireAdditiveYellow (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 149992, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 177954, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 192892, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 482786, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
       propertyPath: m_RootOrder
@@ -15872,6 +15896,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1418167752690486, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
 --- !u!4 &2700306672960407909 stripped
@@ -15887,9 +15915,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8190697010500133534}
     m_Modifications:
+    - target: {fileID: 105540, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 149992, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
       propertyPath: m_Name
       value: SoftFireAdditiveYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 149992, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 177954, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 192892, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 482786, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
       propertyPath: m_RootOrder
@@ -15947,6 +15991,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1418167752690486, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e395833a91102b4a93cdeb0213682db, type: 3}
 --- !u!4 &4456854914823935780 stripped
@@ -15967,6 +16015,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 742973892005860428, guid: bc90efeebeca49e4fb8d0afe1396999c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085517824126626883, guid: bc90efeebeca49e4fb8d0afe1396999c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904434131377019695, guid: bc90efeebeca49e4fb8d0afe1396999c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3190156761100720734, guid: bc90efeebeca49e4fb8d0afe1396999c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -15981,6 +16044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342767473334946117, guid: bc90efeebeca49e4fb8d0afe1396999c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4599011127602913432, guid: bc90efeebeca49e4fb8d0afe1396999c,
         type: 3}
@@ -16091,6 +16159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876342672553646728, guid: bc90efeebeca49e4fb8d0afe1396999c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc90efeebeca49e4fb8d0afe1396999c, type: 3}

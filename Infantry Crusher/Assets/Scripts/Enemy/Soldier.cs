@@ -40,11 +40,11 @@ public class Soldier : Enemy
         for (int i = 0; i < bodyPartList.Count; i++)
         {
             bodyPartList[i].GetRigidbody().isKinematic = false;
-            if (killingBullet.GetBulletType() is BulletType.explosive) bodyPartList[i].GetRigidbody().AddExplosionForce(killingBullet.GetExplosionForce(),
+            if (killingBullet.type is BulletType.explosive) bodyPartList[i].GetRigidbody().AddExplosionForce(killingBullet.GetExplosionForce(),
                                                                                     killingBullet.transform.position,
                                                                                     killingBullet.GetExplosionRadius());
         }
-        if (killingBullet.GetBulletType() is BulletType.normal) bodyPart.GetRigidbody().AddForce(killingBullet.transform.position.normalized*2);
+        if (killingBullet.type is BulletType.normal) bodyPart.GetRigidbody().AddForce(killingBullet.transform.position.normalized*2);
     }
     private IEnumerator HeadshotImageAnime()
     {
@@ -76,7 +76,7 @@ public class Soldier : Enemy
             currentHealth = 0;
             StartCoroutine(HeadshotImageAnime());
         }
-        else currentHealth -= _bullet.GetDamage();
+        else currentHealth -= _bullet.Damage;
         
         
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
@@ -85,7 +85,7 @@ public class Soldier : Enemy
 
         if (currentHealth <= 0)
         {
-            if (_bullet.GetBulletType() is not BulletType.explosive) PlayerController.instance.IncreaseAdditionalGunCounter();
+            if (_bullet.type is not BulletType.explosive) PlayerController.instance.IncreaseAdditionalGunCounter();
              
             StartVisualDying(_bullet, bodyPart);
             Die();

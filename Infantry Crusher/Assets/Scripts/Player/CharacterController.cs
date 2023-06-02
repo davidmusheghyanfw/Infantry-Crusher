@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour
     private Transform player;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform startPos;
-    [SerializeField] private CinemachineVirtualCamera camera;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private CinemachinePath path;
     private CameraController cameraController;
     private void Awake()
@@ -27,7 +27,7 @@ public class CharacterController : MonoBehaviour
     {
         transform.position = startPos.position;
       
-        CameraController.instance.GetCameraProperties(CameraState.Follow).camera = camera;
+        CameraController.instance.GetCameraProperties(CameraState.Follow).camera = virtualCamera;
         CameraController.instance.SwitchCamera(CameraState.Follow);
         CameraController.instance.SetFollowTarget(CameraState.Follow, transform);
         CameraController.instance.SetAimTarget(CameraState.Follow, transform);

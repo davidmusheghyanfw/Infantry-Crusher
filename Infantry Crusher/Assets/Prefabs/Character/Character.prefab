@@ -366,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4184970560150299840}
   startPos: {fileID: 0}
-  camera: {fileID: 3219197491751695565}
+  virtualCamera: {fileID: 3219197491751695565}
   path: {fileID: 6028612379230223818}
 --- !u!195 &3219197493480529503
 NavMeshAgent:
