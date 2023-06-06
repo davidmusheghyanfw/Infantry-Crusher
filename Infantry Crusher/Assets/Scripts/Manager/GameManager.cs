@@ -33,12 +33,14 @@ public class GameManager : MonoBehaviour
     public void InGame()
     {
         isPlayerInteractble = false;
+        CameraController.instance.CameraInMenu();
         MenuView.instance.SetActive(true);
 
     }
 
     public void PrepareLevel()
     {
+        CameraController.instance.CameraInGame();
         LevelManager.instance.InitLevelManager();
         MedalManager.instance.InitMedalManager();
         EnemyManager.instance.InitEnemyManager();

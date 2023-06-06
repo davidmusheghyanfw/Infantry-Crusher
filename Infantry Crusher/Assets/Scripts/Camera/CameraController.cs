@@ -6,8 +6,12 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
+
+    public Canvas canvas;
     [SerializeField] private Camera main;
     public Camera Main { get { return main; } }
+    // [SerializeField] private Camera uiCamera;
+    // public Camera UICamera { get { return uiCamera; } }
 
     private CinemachineTrackedDolly activeTrackedDollyCamera;
 
@@ -26,6 +30,27 @@ public class CameraController : MonoBehaviour
         public CameraState state;
         public CinemachineVirtualCamera camera;
       
+    }
+
+    // public void SwitchToMainCamera()
+    // {
+    //     uiCamera.enabled = false;
+    //     main.enabled = true;
+    // }
+
+    // public void SwitchToUICamera()
+    // {
+    //     uiCamera.enabled = true;
+    //     main.enabled = false;
+    // }
+
+    public void CameraInMenu()
+    {
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+    }
+    public void CameraInGame()
+    {
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
     }
     public CameraProperties GetCameraProperties(CameraState state)
     {
