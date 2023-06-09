@@ -16,9 +16,18 @@ public class BaseView : MonoBehaviour
         baseController.InitBaseController();
         CheckLimits();
     }
+    public void DeintiBaseView()
+    {
+        baseController.DeinitBaseController();
+    }
     private void OnEnable()
     {
         InitBaseView();
+    }
+
+    private void OnDisable()
+    {
+        DeintiBaseView();
     }
     public void DoNext()
     {

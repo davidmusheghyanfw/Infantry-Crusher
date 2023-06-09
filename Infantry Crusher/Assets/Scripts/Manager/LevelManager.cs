@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour, IDataPersistence
 {
     public static LevelManager instance;
     [SerializeField] List<LevelDefinition> levelDefinitions;
     LevelDefinition currentLevelDefinition;
+    
+    private int level = 0;
+    public int Level {get {return level; } set { level = value; } }
     private int currentStage = 0;
     private int enemyCount;
     private int enemyCountInStage;
@@ -16,26 +19,28 @@ public class LevelManager : MonoBehaviour
     public int EnemyCount { get { return enemyCount; } }
     public int EnemyCountInStage { get { return enemyCountInStage; } }
 
-    private GameObject level;
+    private GameObject levelObject;
 
     private void Awake()
     {
         instance = this;
     }
 
+    
     public void InitLevelManager()
     {
         SetCurrentLevel();
-        level = Instantiate(currentLevelDefinition.level.gameObject, Vector3.zero, Quaternion.identity);
+        levelObject = Instantiate(currentLevelDefinition.level.gameObject, Vector3.zero, Quaternion.identity);
         diedEnemyCount = 0;
         CalculateEnemyCountInLevel();
         InitPlayerGuns();
         
         InitStage();
     }
+
     public void SetCurrentLevel()
     {
-        int index = DataManager.instance.GetLevelNumber() % levelDefinitions.Count;
+        int index = level % levelDefinitions.Count;
         currentLevelDefinition = levelDefinitions[index];
     }
 
@@ -97,7 +102,7 @@ public class LevelManager : MonoBehaviour
     public void ClearLevel()
     {
         currentStage = 0;
-        Destroy(level);
+        Destroy(levelObject);
     }
 
     public void CheckLevelState()
@@ -127,5 +132,20 @@ public class LevelManager : MonoBehaviour
                 LevelEndView.instance.ActiveLevelLoose();
             });
         }
+    }
+
+    public void IncreaseLevelNumber()
+    {
+        level++;
+    }
+
+    public void LoadData(GameData data)
+    {
+       level = data.level;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+       data.level = level;
     }
 }

@@ -1038,7 +1038,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseState: 2
-  baseElements: []
+  baseElements:
+  - {fileID: 1953548714924217211}
+  - {fileID: 603144863578584630}
+  - {fileID: 1594684337999399799}
 --- !u!1 &4204784899768613380
 GameObject:
   m_ObjectHideFlags: 0

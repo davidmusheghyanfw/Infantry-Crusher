@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void LevelWin()
     {
         ClearLevel();
-        DataManager.instance.IncreaseLevelNumber();
+        LevelManager.instance.IncreaseLevelNumber();
         InGame();
     }
 

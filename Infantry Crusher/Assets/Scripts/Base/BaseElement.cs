@@ -8,7 +8,7 @@ public class BaseElement : MonoBehaviour
 {
     [SerializeField] GameObject filledObject;
     [Range(0f, 1f)] [SerializeField] float progress = 0f;
-
+    public float Progress{get{return progress;}}
     [SerializeField] Transform fillMask;
 
     [SerializeField] Transform filledContainer;
@@ -74,6 +74,7 @@ public class BaseElement : MonoBehaviour
 
     public void SetFillProgress(float _progress, float time)
     {
+        Debug.Log(_progress);
         progress = _progress;
         fillMask.transform.localPosition = transform.position - Vector3.up * Mathf.Lerp(progressRange.x, progressRange.y, progress);
     }
