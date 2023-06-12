@@ -48,7 +48,7 @@ public class MedalManager : MonoBehaviour
     {
         foreach(Transform obj in transform)
         {
-            Destroy(obj);
+            Destroy(obj.gameObject);
         }
     }
 

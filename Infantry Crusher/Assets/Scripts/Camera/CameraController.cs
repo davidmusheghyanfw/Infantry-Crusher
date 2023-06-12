@@ -84,11 +84,12 @@ public class CameraController : MonoBehaviour
     {
         for (int i = 0; i < cameraStates.Count; i++)
         {
+            if(cameraStates[i].camera is null) continue;
             cameraStates[i].camera.Priority = 0;
 
             if (cameraStates[i].state == state)
             {
-                cameraStates[i].camera.Priority = 10;
+                cameraStates[i].camera.Priority = 12;
                 continue;
             }
         }
@@ -160,4 +161,4 @@ public class CameraController : MonoBehaviour
 
     }
 }
-public enum CameraState { Start,Follow,Player,End};
+public enum CameraState { Start,Follow,Player,End,UI};
