@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseManager : MonoBehaviour, IDataPersistence
+public class BaseManager : MonoBehaviour
 {
     public static BaseManager instance;
     [SerializeField] private List<BaseController> bases;
