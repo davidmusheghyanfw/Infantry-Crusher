@@ -80,17 +80,19 @@ public class BaseManager : MonoBehaviour, IDataPersistence
     public BaseController ShowNextBase()
     {
         if(baseIndex + 1 >= activeBases.Count) return null;
-        activeBases[baseIndex].Hide();
+        currentBase = activeBases[baseIndex];
         baseIndex++;
-        activeBases[baseIndex].Show();
+        currentBase = activeBases[baseIndex];
+        currentBase.Show();
         return activeBases[baseIndex];   
     }
     public BaseController ShowPrevBase()
     {
         if(baseIndex - 1 < 0) return null;
-        activeBases[baseIndex].Hide();
+        currentBase = activeBases[baseIndex];
         baseIndex--;
-        activeBases[baseIndex].Show();
+        currentBase = activeBases[baseIndex];
+        currentBase.Show();
         return activeBases[baseIndex];
     }
 
