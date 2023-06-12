@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         isPlayerInteractble = false;
         CameraController.instance.CameraInMenu();
+        CameraController.instance.SwitchCamera(CameraState.UI);
         MenuView.instance.SetActive(true);
 
     }
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
 
         PlayerController.instance.ClearAllGuns();
         LevelManager.instance.ClearLevel();
+        MedalManager.instance.ClearMedals();
         Destroy(CharacterController.instance.gameObject);
         EnemyManager.instance.StopEnemySpawnRoutine();
         EnemyManager.instance.ClearAllEnemies();

@@ -121,9 +121,9 @@ public class PlayerController : MonoBehaviour
 
     void OnTouchUp(Vector3 lastPos)
     {
-        if(activeGun is not null) activeGun.StopVisual();
         if (GameManager.instance.IsPlayerInteractble)
         {
+            if(activeGun is not null) activeGun.StopVisual();
             if (activeAdditionalGun.IsPreparedToShoot)
             {
                 activeAdditionalGun.Shoot();
