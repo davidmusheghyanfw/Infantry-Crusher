@@ -82,7 +82,8 @@ public class BaseManager : MonoBehaviour
         if(baseIndex + 1 >= activeBases.Count) return null;
         activeBases[baseIndex].Hide();
         baseIndex++;
-        activeBases[baseIndex].Show();
+        currentBase = activeBases[baseIndex];
+        currentBase.Show();
         return activeBases[baseIndex];   
     }
     public BaseController ShowPrevBase()
@@ -90,7 +91,8 @@ public class BaseManager : MonoBehaviour
         if(baseIndex - 1 < 0) return null;
         activeBases[baseIndex].Hide();
         baseIndex--;
-        activeBases[baseIndex].Show();
+        currentBase = activeBases[baseIndex];
+        currentBase.Show();
         return activeBases[baseIndex];
     }
 
