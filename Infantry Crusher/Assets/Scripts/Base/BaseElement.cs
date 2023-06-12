@@ -74,8 +74,9 @@ public class BaseElement : MonoBehaviour
 
     public void SetFillProgress(float _progress, float time)
     {
-        Debug.Log(_progress);
+        
         progress = _progress;
+        print(progress);
         fillMask.transform.localPosition = transform.position - Vector3.up * Mathf.Lerp(progressRange.x, progressRange.y, progress);
     }
 }

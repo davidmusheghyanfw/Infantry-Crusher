@@ -33,6 +33,7 @@ public class BaseManager : MonoBehaviour, IDataPersistence
                 currentBase.Show();
                 activeBases.Add(currentBase);
             }
+            
         }
       
     }
@@ -41,6 +42,7 @@ public class BaseManager : MonoBehaviour, IDataPersistence
     {
         currentBase.baseState = state;
     }
+
 
     public void BaseComplited()
     {
@@ -99,26 +101,18 @@ public class BaseManager : MonoBehaviour, IDataPersistence
             for (int i = 0; i < bases.Count; i++)
             {
                 bases[i].baseState = data.basesData[i].state;
-                for (int j = 0; j < data.basesData[i].elementDatas.Count; j++)
-                {
-                    bases[i].BaseElements[j].SetFillProgress(data.basesData[i].elementDatas[j].progress,0);
-                }
+                Debug.Log(data.basesData[i].elementDatas);
+                bases[i].SetData(data.basesData[i].elementDatas);
             }
         }
     }
 
     public void SaveData(ref GameData data)
     {
-        
+        data.basesData = new List<BaseData>();
         for (int i = 0; i < bases.Count; i++)
         {
-            List<BaseElementData> elementDatas = new List<BaseElementData>();
-            for (int j = 0; j < bases[i].BaseElements.Count; j++)
-            {
-                elementDatas.Add(new BaseElementData(bases[i].BaseElements[j]));
-            }
-            data.basesData.Add(new BaseData(bases[i].baseState,elementDatas));
-            
+            data.basesData.Add(new BaseData(bases[i].baseState,bases[i].BaseElementsDatas));   
         }
          
     }
