@@ -7,6 +7,9 @@ public class GameData
 {
     public List<BaseData> basesData = new List<BaseData>();
     public int level;
+
+    public int scrap;
+    public int money;
     public GameData()
     {
         level = 0;

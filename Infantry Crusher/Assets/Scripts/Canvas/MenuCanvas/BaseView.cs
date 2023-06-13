@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class BaseView : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class BaseView : MonoBehaviour
     
     [SerializeField] private GameObject prevBtn;
     [SerializeField] private GameObject nextBtn;
+
+    [SerializeField] private GameObject fillBtn;
+
+    [SerializeField] private GameObject fillEffectPrefab;
     
 
     public void InitBaseView()
@@ -45,6 +50,27 @@ public class BaseView : MonoBehaviour
     {
         nextBtn.SetActive(baseController.CheckMaxLimit());
         prevBtn.SetActive(baseController.CheckMinLimit());
+    }
+
+    public void OnPointerUp()
+    {
+
+    }
+
+    public void OnPointerDown()
+    {
+        Vector3 startPoint = fillBtn.transform.position;   
+        Vector3 endPoint = baseController.CurrentBase.CurrentBaseElement.transform.position;
+        endPoint = CameraController.instance.Main.WorldToScreenPoint(endPoint);
+
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+        go.transform.position = startPoint;
+        
+        GameObject g1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+        go.transform.position = endPoint;
+
     }
 
 }

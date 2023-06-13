@@ -10,6 +10,7 @@ public class LevelEndView : MonoBehaviour
     [SerializeField] TMP_Text lvlWinKillsTxt;
     [SerializeField] GameObject levelLose;
     [SerializeField] TMP_Text lvlLooseKillsTxt;
+    [SerializeField] TMP_Text lvlScrapCountTxt;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class LevelEndView : MonoBehaviour
     {
         levelWin.SetActive(true);
         lvlWinKillsTxt.text = "KILLS:" + LevelManager.instance.EnemyCount;
+        UpdateScrapAmount();
     }
 
     public void ActiveLevelLoose()
@@ -43,6 +45,11 @@ public class LevelEndView : MonoBehaviour
     {
         GameManager.instance.LeveLose();
         levelLose.SetActive(false);
+    }
+
+    public void UpdateScrapAmount()
+    {
+        lvlScrapCountTxt.text = "+"+LevelManager.instance.LevelScrapAmount;
     }
     
 }

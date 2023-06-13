@@ -29,7 +29,7 @@ public class BaseController : MonoBehaviour
          baseElementsData = _baseElementDatas;
          for (int i = 0; i < baseElementsData.Count; i++)
          {
-
+            baseElements[i].state = _baseElementDatas[i].state;
             baseElements[i].SetFillProgress(_baseElementDatas[i].progress,1f);
          }
       }
@@ -44,4 +44,4 @@ public class BaseController : MonoBehaviour
    }
 
 }
-public enum BaseElementState{complite,inPorgress,locked}
+public enum BaseElementState{complete,inPorgress,locked}

@@ -9,6 +9,8 @@ public class BaseElement : MonoBehaviour
     [SerializeField] GameObject filledObject;
     [Range(0f, 1f)] [SerializeField] float progress = 0f;
     public float Progress{get{return progress;}}
+
+    public int maxFillValue;
     [SerializeField] Transform fillMask;
 
     [SerializeField] Transform filledContainer;
@@ -30,6 +32,8 @@ public class BaseElement : MonoBehaviour
     Material[] emptyMaterials;
 
     GameObject emptyObject;
+
+    public BaseElementState state;
 
 
     private void Start() {
@@ -76,7 +80,10 @@ public class BaseElement : MonoBehaviour
     {
         
         progress = _progress;
-        print(progress);
         fillMask.transform.localPosition = transform.position - Vector3.up * Mathf.Lerp(progressRange.x, progressRange.y, progress);
+        if(progress == 1f)
+        {
+            state = BaseElementState.complete;
+        }
     }
 }

@@ -8,6 +8,8 @@ public class BaseManager : MonoBehaviour, IDataPersistence
     [SerializeField] private List<BaseController> bases;
     private List<BaseController> activeBases;
     private BaseController currentBase;
+
+    public BaseController CurrentBase{get{return currentBase;}}
     private int baseIndex;
     private void Awake() {
 
@@ -103,7 +105,6 @@ public class BaseManager : MonoBehaviour, IDataPersistence
             for (int i = 0; i < bases.Count; i++)
             {
                 bases[i].baseState = data.basesData[i].state;
-                Debug.Log(data.basesData[i].elementDatas);
                 bases[i].SetData(data.basesData[i].elementDatas);
             }
         }

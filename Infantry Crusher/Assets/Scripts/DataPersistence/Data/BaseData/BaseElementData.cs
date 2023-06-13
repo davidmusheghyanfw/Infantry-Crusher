@@ -6,9 +6,10 @@ using UnityEngine;
 public class BaseElementData
 {
     public float progress;
-
-    public BaseElementData(BaseElement elements)
+    public BaseElementState state;
+    public BaseElementData(BaseElement element)
     {
-        progress = elements.Progress;
+        progress = element.Progress;
+        state = element.state;
     }
 }

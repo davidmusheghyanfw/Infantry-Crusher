@@ -19,6 +19,11 @@ public class LevelManager : MonoBehaviour, IDataPersistence
     public int EnemyCount { get { return enemyCount; } }
     public int EnemyCountInStage { get { return enemyCountInStage; } }
 
+
+    private int levelScrapAmount = 0;
+    public int LevelScrapAmount{get{return levelScrapAmount;}}
+    private int levelMoneyAmount = 0;
+    public int LevelMoneyAmount{get{return levelMoneyAmount;}}
     private GameObject levelObject;
 
     private void Awake()
@@ -132,6 +137,18 @@ public class LevelManager : MonoBehaviour, IDataPersistence
                 LevelEndView.instance.ActiveLevelLoose();
             });
         }
+    }
+
+    public void AddScrapAmount(int _scrap)
+    {
+        levelScrapAmount += _scrap;
+        MoneyManager.instance.AddScrapAmount(_scrap);
+    }
+
+    public void AddMoneyAmount(int _money)
+    {
+        levelMoneyAmount += _money;
+        MoneyManager.instance.AddMoneyAmount(_money);
     }
 
     public void IncreaseLevelNumber()

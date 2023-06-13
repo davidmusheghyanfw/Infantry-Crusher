@@ -15,6 +15,10 @@ public class Dron : Enemy, IDestroyable
     [SerializeField] float SwitchPosTime;
     [SerializeField] private Transform VisualContainer;
     [SerializeField] private Vector3 dronRotAngle;
+
+    [SerializeField] private int scrap = 50;
+
+
     public override void Die()
     {
         healthBar.gameObject.SetActive(false);
@@ -27,6 +31,8 @@ public class Dron : Enemy, IDestroyable
         mesh.material.color = destroyMaterialColor;
         
         EnemyManager.instance.EnemyDied(this);
+        LevelManager.instance.AddScrapAmount(scrap);
+        
         Destroy(gameObject, 3);
     }
 
